@@ -1,0 +1,40 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+const {
+  title,
+  description = "",
+  datePublished,
+  dateModified = datePublished,
+  image = "",
+  url = "",
+} = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  url={url}
+  ogImage={image}
+  isBlogPost={true}
+  blogPostData={{
+    title,
+    description,
+    logo: image,
+    image,
+    datePublished,
+    dateModified,
+  }}
+>
+  <article class="prose dark:prose-invert">
+    <div class="max-w-7xl mx-auto">
+      <header class="mb-8">
+        <p class="text-sm text-foreground/60 dark:text-foreground/50">
+          Published on {new Date(datePublished).toLocaleDateString()}
+        </p>
+      </header>
+
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

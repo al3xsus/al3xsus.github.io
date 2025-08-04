@@ -1,0 +1,67 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import PostLayout from "../../layouts/PostLayout.astro";
+
+import sanitizeHtml from "sanitize-html";
+import { marked } from "marked";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+
+const cleanHtml = sanitizeHtml(marked.parse(project.data.content), {
+  allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "pre",
+    "code",
+    "img",
+    "table",
+    "thead",
+    "tbody",
+    "tr",
+    "td",
+    "th",
+  ]),
+  allowedAttributes: {
+    ...sanitizeHtml.defaults.allowedAttributes,
+    img: ["src", "alt", "width", "height"],
+    code: ["class"],
+    a: ["href", "name", "target", "rel"],
+    td: ["colspan", "rowspan"],
+    th: ["colspan", "rowspan"],
+  },
+  allowedSchemes: ["http", "https", "mailto", "data"],
+  allowedSchemesByTag: {
+    img: ["http", "https", "data"],
+  },
+  allowProtocolRelative: true,
+});
+---
+
+<PostLayout {...project.data}>
+  <section set:html={cleanHtml} />
+  <div class="mt-8">
+    <h3 class="text-lg font-semi bold">Repository</h3>
+    <p>
+      <a
+        href={project.data.repo}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary"
+      >
+        {project.data.repo}
+      </a>
+    </p>
+  </div>
+</PostLayout>

@@ -1,0 +1,142 @@
+---
+const { id, data, collection } = Astro.props;
+
+const isPost = collection === "posts";
+const isProject = collection === "projects";
+
+const title = data.title ?? id;
+const description = data.description ?? "";
+const slug = data.slug ?? id;
+const date = data.date ?? "";
+const tags = data.tags ?? [];
+const category = isPost ? "Post" : "Project";
+const href = `/${collection}/${slug}`;
+const coverImage = data.coverImage ?? "/images/default-cover.jpg";
+const linkedinURL = data.linkedinURL ?? null;
+const mediumURL = data.mediumURL ?? null;
+const devtoURL = data.devtoURL ?? null;
+const canonical = data.canonical ?? null;
+
+const repo = isProject ? data.repo : null;
+const liveDemo = data.liveDemo ?? null;
+const techStack = data.techStack ?? [];
+---
+
+<article class="card hover:shadow-md transition">
+  <a href={href} class="block space-y-2 group">
+    {
+      coverImage && (
+        <img
+          src={coverImage}
+          alt={title}
+          class="w-full h-48 object-contain rounded-lg mb-2 group-hover:opacity-90 transition-opacity"
+        />
+      )
+    }
+
+    <div class="flex items-center space-x-2 mb-2">
+      {
+        linkedinURL && (
+          <a
+            href={linkedinURL}
+            class="text-primary hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <!-- LinkedIn SVG -->
+            <svg ... class="h-5 w-5" ... />
+          </a>
+        )
+      }
+      {
+        mediumURL && (
+          <a
+            href={mediumURL}
+            class="text-primary hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg ... class="h-5 w-5" ... />
+          </a>
+        )
+      }
+      {
+        devtoURL && (
+          <a
+            href={devtoURL}
+            class="text-primary hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg ... class="h-5 w-5" ... />
+          </a>
+        )
+      }
+    </div>
+
+    <h2 class="text-xl font-bold text-primary group-hover:underline">
+      {title}
+    </h2>
+
+    <p class="text-sm text-foreground/60">
+      {date} • {category}
+    </p>
+
+    <p class="text-base text-foreground/10">
+      {description}
+    </p>
+
+    {
+      tags.length > 0 && (
+        <ul class="flex flex-wrap gap-2 mt-2 text-sm text-primary">
+          {tags.map((tag) => (
+            <li class="px-2 py-0.5 bg-primary/10 rounded">{tag}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    {
+      repo && (
+        <p class="text-sm mt-2 text-primary">
+          Repo:{" "}
+          <a
+            href={repo}
+            class="underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {repo}
+          </a>
+        </p>
+      )
+    }
+
+    {
+      liveDemo && (
+        <p class="text-sm mt-2 text-primary">
+          Live Demo:{" "}
+          <a
+            href={liveDemo}
+            class="underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {liveDemo}
+          </a>
+        </p>
+      )
+    }
+
+    {
+      techStack.length > 0 && (
+        <ul class="flex flex-wrap gap-2 mt-2 text-sm text-primary">
+          {techStack.map((tech) => (
+            <li class="px-2 py-0.5 bg-primary/10 rounded">{tech}</li>
+          ))}
+        </ul>
+      )
+    }
+  </a>
+</article>
+

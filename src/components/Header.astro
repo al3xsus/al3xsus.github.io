@@ -1,0 +1,113 @@
+---
+const nav = [
+  { name: "Posts", href: "/posts" },
+  { name: "Projects", href: "/projects" },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  role="banner"
+  aria-label="Site Header"
+  class="w-full px-6 py-4 bg-background text-foreground border-t border-grid"
+>
+  <div
+    class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4"
+  >
+    <!-- Logo / Site Title -->
+    <div class="text-lg font-semibold">
+      <a href="/" class="hover:text-primary transition-colors">My Blog</a>
+    </div>
+
+    <!-- Center Nav Links -->
+    <nav aria-label="Main Navigation">
+      <ul class="flex gap-6 text-sm font-medium">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class={`hover:text-primary transition-colors ${
+                  currentPath === item.href
+                    ? "text-primary underline underline-offset-4"
+                    : ""
+                }`}
+                aria-current={currentPath === item.href ? "page" : undefined}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <!-- Button Group: Theme + Background -->
+    <div class="flex gap-1 rounded-lg border border-grid overflow-hidden">
+      <!-- Theme Toggle -->
+      <button
+        type="button"
+        id="theme-toggle"
+        class="p-2 hover:bg-grid transition-colors"
+        aria-label="Toggle Dark Mode"
+      >
+        <svg id="theme-icon" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path
+            id="sun-icon"
+            d="M12 4a1 1 0 0 1 1 1v1a1 1 0 0 1-2 0V5a1 1 0 0 1 1-1zm6.36..."
+          ></path>
+          <path
+            id="moon-icon"
+            class="hidden"
+            d="M17.75 15.25a6.5 6.5 0 0 1-9-9..."></path>
+        </svg>
+      </button>
+
+      <!-- Background Pattern Toggle -->
+      <button
+        type="button"
+        id="bg-toggle"
+        class="p-2 hover:bg-grid transition-colors"
+        aria-label="Toggle Background Pattern"
+      >
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <circle
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"></circle>
+          <path
+            d="M4 4l16 16M4 20L20 4"
+            stroke="currentColor"
+            stroke-width="1.5"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const themeBtn = document.getElementById("theme-toggle");
+    const themeIconSun = document.getElementById("sun-icon");
+    const themeIconMoon = document.getElementById("moon-icon");
+
+    themeBtn.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      const isDark = document.documentElement.classList.contains("dark");
+      themeIconSun.classList.toggle("hidden", isDark);
+      themeIconMoon.classList.toggle("hidden", !isDark);
+    });
+
+    const bgBtn = document.getElementById("bg-toggle");
+    const patterns = ["grid-paper", "dot-grid"];
+    let index = 0;
+
+    bgBtn.addEventListener("click", () => {
+      document.body.classList.remove(...patterns);
+      index = (index + 1) % patterns.length;
+      document.body.classList.add(patterns[index]);
+    });
+  });
+</script>

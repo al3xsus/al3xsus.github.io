@@ -1,0 +1,34 @@
+---
+// props: { name: string; url: string; icon: "linkedin" | "github" | "email" }
+const { name, url, icon } = Astro.props;
+---
+
+<a
+  href={url}
+  class="social-link"
+  rel="noopener noreferrer"
+  target="_blank"
+  aria-label={name}
+>
+  <span class="social-link-icon">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      {
+        icon === "linkedin" && (
+          <path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-6a6 6 0 0 1 6-6zM2 9h4v12H2zM4 3a2 2 0 1 1 0 4a2 2 0 0 1 0-4z" />
+        )
+      }
+      {
+        icon === "github" && (
+          <path d="M12 0a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.17c-3.34.73-4.04-1.61-4.04-1.61a3.17 3.17 0 0 0-1.33-1.75c-1.09-.74.09-.73.09-.73a2.51 2.51 0 0 1 1.84 1.24a2.55 2.55 0 0 0 3.49 1a2.54 2.54 0 0 1 .76-1.6c-2.67-.3-5.47-1.33-5.47-5.9a4.61 4.61 0 0 1 1.23-3.19a4.28 4.28 0 0 1 .12-3.14s1-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23a4.28 4.28 0 0 1 .12 3.14a4.61 4.61 0 0 1 1.23 3.19c0 4.59-2.81 5.59-5.49 5.88a2.87 2.87 0 0 1 .82 2.23v3.3c0 .32.22.7.83.58A12 12 0 0 0 12 0z" />
+        )
+      }
+      {
+        icon === "email" && (
+          <path d="M1.5 4.5h21v15h-21z M3 6v.5l9 6 9-6V6l-9 6-9-6z" />
+        )
+      }
+    </svg>
+  </span>
+
+  <span>{name}</span>
+</a>

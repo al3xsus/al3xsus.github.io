@@ -1,0 +1,45 @@
+---
+import SocialLink from "./SocialLink.astro";
+
+const {
+  author = "",
+  siteName = "",
+  year = new Date().getFullYear(),
+  lastUpdated = new Date().toISOString().split("T")[0],
+  social = [],
+} = Astro.props;
+---
+
+<footer
+  role="contentinfo"
+  aria-label="Site Footer"
+  class="w-full px-6 py-4 bg-[var(--color-bg)] text-[var(--color-fg)] border-t border-[var(--color-grid)]"
+>
+  <div
+    class="max-w-7xl mx-auto grid gap-8 md:grid-cols-3 items-center text-center md:text-left"
+  >
+    <!-- Left: Credits -->
+    <div class="text-sm space-y-1">
+      <p>&copy; {year}</p>
+      <p>
+        Made by <span class="text-primary font-medium">{author}</span>
+      </p>
+    </div>
+
+    <!-- Center: Social Links -->
+    <div class="flex justify-center md:justify-center gap-6">
+      {
+        social.map((link) => (
+          <SocialLink name={link.name} url={link.url} icon={link.icon} />
+        ))
+      }
+    </div>
+
+    <!-- Right: Last Updated -->
+    <div class="text-sm md:text-right text-center">
+      <p class="text-foreground/60">
+        Last updated: <time dateTime={lastUpdated}>{lastUpdated}</time>
+      </p>
+    </div>
+  </div>
+</footer>

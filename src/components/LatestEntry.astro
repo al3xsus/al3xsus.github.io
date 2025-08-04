@@ -1,0 +1,14 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import { undefined } from "astro:schema";
+
+import sanitizeHtml from "sanitize-html";
+import { marked } from "marked";
+import Card from "./Card.astro";
+
+const { collection } = Astro.props;
+const entries = await getCollection(collection);
+const latestEntry = entries.sort((a, b) => b.data.date - a.data.date)[0];
+---
+
+<Card {...latestEntry} />

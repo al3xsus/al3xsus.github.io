@@ -1,0 +1,133 @@
+---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { generateBreadcrumbs } from "../utils/breadcrumbs.ts";
+
+const breadcrumbs = generateBreadcrumbs(Astro.url.pathname);
+
+const {
+  title,
+  description = '',
+  ogImage = '',
+  url = '',
+  author = 'Site Author',
+  isBlogPost = false,
+  blogPostData = {}
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <link rel="canonical" href={url} />
+    <meta name="theme-color" content="#2B7AC0" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": `${title}`,
+      "url": `${url}`,
+      "author": {
+        "@type": "Person",
+        "name": `${author}`
+      },
+      "description": `${description}`,
+      "image": `${ogImage}`
+    }
+    </script>
+
+    <!-- BreadcrumbList Structured Data (optional) -->
+    {breadcrumbs.length > 0 && (
+      <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumbs.map((item, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": item.name,
+          "item": item.url
+        }))
+      })}
+      </script>
+    )}
+
+    <!-- BlogPosting Structured Data (optional) -->
+    {isBlogPost && (
+      <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": blogPostData.title || title,
+        "description": blogPostData.description || description,
+        "image": blogPostData.image || ogImage,
+        "author": {
+          "@type": "Person",
+          "name": blogPostData.author || author
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": blogPostData.publisher || author,
+          "logo": {
+            "@type": "ImageObject",
+            "url": blogPostData.logo || ogImage
+          }
+        },
+        "datePublished": blogPostData.datePublished,
+        "dateModified": blogPostData.dateModified || blogPostData.datePublished,
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": url
+        }
+      })}
+      </script>
+    )}
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  </head>
+  <body class="antialiased transition-colors duration-300">
+    <Header />
+  
+      <main id="main-content" role="main" tabindex="-1" class="flex-1 px-6 py-4">
+        <slot />
+      </main>
+  
+      <Footer
+        author="Alexandr Lavrentyev"
+        siteName="Vdeep AI"
+        lastUpdated="2025-07-03"
+        social={[
+          { name: "LinkedIn", url: "https://linkedin.com/in/rachellivne", icon: "linkedin" },
+          { name: "GitHub", url: "https://github.com/vdeep-ai", icon: "github" },
+          { name: "Email", url: "mailto:hello@vdeep.co", icon: "email" }
+        ]}
+      />
+  </body>
+  
+</html>

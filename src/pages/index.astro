@@ -1,20 +1,57 @@
 ---
+import { Picture } from "astro:assets";
+import myImage from "../images/myPhoto.jpg"; // Image is 1600x900
 
+import LatestEntry from "../components/LatestEntry.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-	  <a href="/">Home</a>
-	  <a href="/about/">About</a>
-	  <a href="/blog/">Blog</a>
+<BaseLayout title="Home" description="Welcome to my blog!">
+  <div
+    class="h-full max-w-7xl mx-auto px-6 grid grid-rows-[1fr_2fr] grid-cols-1 md:grid-cols-3 gap-4"
+  >
+    <!-- Top: hero -->
+    <section
+      class="md:col-span-3 card flex items-center justify-around animate-fade-in"
+    >
+      <Picture
+        src={myImage}
+        alt="A description of my image."
+        class="rounded-full w-16 h-16 md:w-48 md:h-48 object-cover"
+      />
 
-		<h1>Astro</h1>
-	</body>	
-</html>
+      <article class="text-center">
+        <h1 class="text-3xl font-bold">
+          Hello, I'm Alex and Welcome to My Blog
+        </h1>
+        <p class="text-lg text-foreground/70 dark:text-foreground/60 mt-2">
+          A passionate developer sharing my journey and projects.
+        </p>
+        <p class="text-lg text-foreground/70 dark:text-foreground/60 mt-2">
+          Explore my posts and projects.
+        </p>
+      </article>
+    </section>
+
+    <!-- Bottom: responsive cards -->
+    <section
+      class="container flex-col items-center justify-center animate-slide-up sm:col-span-3 md:col-span-1"
+    >
+      <h3 class="text-md font-semibold text-center">Latest Post</h3>
+      <LatestEntry collection="posts" />
+    </section>
+
+    <section
+      class="container flex items-center justify-center animate-slide-up sm:col-span-3 md:col-span-1"
+    >
+      <h2 class="text-xl font-semibold">Card Two</h2>
+    </section>
+
+    <section
+      class="container flex-col items-center justify-center animate-slide-up sm:col-span-3 md:col-span-1"
+    >
+      <h3 class="text-md font-semibold text-center">Latest Project</h3>
+      <LatestEntry collection="projects" />
+    </section>
+  </div>
+</BaseLayout>
