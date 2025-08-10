@@ -18,8 +18,21 @@ const {
 ---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
+  <head>  
     <meta charset="UTF-8" />
+
+    <!-- 🌒 Prevent FOUC: Set theme & background early -->
+    <script is:inline>
+      (() => {
+        try {
+          if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (_) {}
+      })();
+    </script>
+    
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
@@ -123,11 +136,16 @@ const {
         siteName="Vdeep AI"
         lastUpdated="2025-07-03"
         social={[
-          { name: "LinkedIn", url: "https://linkedin.com/in/rachellivne", icon: "linkedin" },
-          { name: "GitHub", url: "https://github.com/vdeep-ai", icon: "github" },
-          { name: "Email", url: "mailto:hello@vdeep.co", icon: "email" }
+          { name: "LinkedIn", url: "https://www.linkedin.com/in/alexandr-lavrentyev/", icon: "linkedin" },
+          { name: "GitHub", url: "https://github.com/al3xsus", icon: "github" },
+          { name: "Email", url: "mailto:al3xsus@pm.me", icon: "email" }
         ]}
       />
+      <script>
+        const pattern = localStorage.getItem("background") || "grid-paper";
+        document.body.classList.add(pattern);
+      </script>
+      
   </body>
   
 </html>

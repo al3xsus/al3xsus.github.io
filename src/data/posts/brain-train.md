@@ -14,12 +14,12 @@ tags:
     "semantic-ui",
     "memory",
     "cognitive-app",
-    "spa",
+    "single-page-application",
     "cognitive-games",
   ]
 coverImage: "/images/posts/brain-train-cover.webp"
-canonical: "ain-train-react-ui"
-linkedinURL: "brain-train-react-ui"
+canonical: "brain-train-react-ui"
+linkedinURL: ""
 mediumURL: "https://levelup.gitconnected.com/web-application-for-a-brain-training-23dc567f0315"
 project: "brain-train"
 ---
@@ -36,13 +36,28 @@ What does that mean for us? We must be prepared to live longer, work harder (sin
 
 Let’s go step by step and implement just one exercise. For now.
 
-[![Dancing brain gif](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTZpcHBhOXg0MzdodXQ0ZHQwNjV4Mjdldmd6cjlzbnI2aXNocGxjZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lxN6uqrkziktujpAnH/giphy.gif)](https://giphy.com/gifs/kochstrasse-hannover-agencylife-agenturleben-lxN6uqrkziktujpAnH)
+## 📑 Table of Contents
 
-### Game of Words and Colors
+1. [Game of Words and Colors](#game-of-words-and-colors)
+2. [Project Setup](#project-setup)
+3. [Defining the Palette](#defining-the-palette)
+4. [State Management](#state-management)
+5. [Generating Table Data](#generating-table-data)
+6. [Rendering the Table](#rendering-the-table)
+7. [Game Logic](#game-logic)
+8. [Manipulating SVG Elements](#manipulating-svg-elements)
+9. [Demo Screenshots](#demo-screenshots)
+10. [Wrapping Up](#wrapping-up)
+
+---
+
+## Game of Words and Colors
+
+[![Dancing brain gif](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTZpcHBhOXg0MzdodXQ0ZHQwNjV4Mjdldmd6cjlzbnI2aXNocGxjZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lxN6uqrkziktujpAnH/giphy.gif)](https://giphy.com/gifs/kochstrasse-hannover-agencylife-agenturleben-lxN6uqrkziktujpAnH)
 
 Look at the picture below.
 
-[![Stroop effect](https://i.insider.com/5d38a8fc2516e97a8f23a3ab?width=1000&format=jpeg&auto=webp)](https://www.businessinsider.com/game-shows-words-in-different-colors-stroop-effect-it-2019-7)
+[![Stroop effect](https://i.insider.com/5d38a8fc2516e97a8f23a3ab?width=1000&format=jpeg&auto=webp)](https://www.businessinsider.com/game-shows-words-in-different-colors-stroop-effect-it-2019-7)  
 _Stroop effect_
 
 Now try to read and pronounce the **COLOR** of the word, not the word itself. And try to do it fast. Not so easy task, huh? What you’ve seen here is called the [Stroop effect](https://en.wikipedia.org/wiki/Stroop_effect). It is mostly used in various tests and psychological research, but according to various internet sources, it could also keep your mind sharp and slow down the effects of Alzheimer’s disease. Anyway, let’s create a game out of it!
@@ -56,6 +71,8 @@ So, let’s get down to business — how we’ll do it? By adding four key p
 
 So, it’s gonna be a playable customizable table with random words and colors, where you need to pronounce the color of the selected word, which changes over time. All others are bells and whistles. Time for code!
 
+## Project Setup
+
 I’ll write this project in React with TypeScript and the Semantic UI React CSS framework. You’re free to use any tool, language, and framework, of course.
 
 First of all, creating the project
@@ -65,6 +82,8 @@ npx create-react-app brain-train --template typescript
 ```
 
 With your permission, I’m not gonna describe every used package, since it’s gonna transform already boring text into something unreadable. You can always check the list of necessary packages at **package.json** in the repository. The same could be said about every module — [you can see the whole code on GitHub](https://github.com/al3xsus/brain-train).
+
+## Defining the Palette
 
 This is my palette:
 
@@ -93,8 +112,10 @@ const Palette = [
 ];
 ```
 
-![Palette modal](https://cdn-images-1.medium.com/max/800/1*-sT0F5P6BUN1DdZasz1EYQ.png)
+![Palette modal](https://cdn-images-1.medium.com/max/800/1*-sT0F5P6BUN1DdZasz1EYQ.png)  
 _Palette modal_
+
+## State Management
 
 I built everything using hooks, so this is my “state”:
 
@@ -108,7 +129,9 @@ const [activeCell, setActiveCell] = (React._useState_ < null) | (number > null);
 const [gameStatus, setGameStatus] = React._useState_(false);
 ```
 
-_rowNum and colNum are rows and columns for the table, speed is the game speed, tableData is for randomly generated table data, the direction is for game direction, activeCell is for the currently active cell, and gameStatus is for play/stop. I’ve tried to keep it obvious because the_ [_KISS principle_](https://en.wikipedia.org/wiki/KISS_principle) _is a must-have thing._
+_rowNum and colNum are rows and columns for the table, speed is the game speed, tableData is for randomly generated table data, the direction is for game direction, activeCell is for the currently active cell, and gameStatus is for play/stop._
+
+## Generating Table Data
 
 This is how I generate random data for a table:
 
@@ -130,7 +153,9 @@ const prepareData = () => {
 };
 ```
 
-_It’s a multidimensional array, which consists of rows and columns, and every_ **_cell_** _inside consists of two numbers — one for the color name, the other for the color code_
+_It’s a multidimensional array, which consists of rows and columns, and every **cell** inside consists of two numbers — one for the color name, the other for the color code._
+
+## Rendering the Table
 
 This is how I generate and populate the table:
 
@@ -167,9 +192,11 @@ const generateTable = () => {
 </Table>
 ```
 
-_We’re just populating cells inside of columns and rows with Palette[y].name SVG text painted in Palette[x].code. Why SVG? Because it’s one of the simplest ways to_ [_fit text into the container_](https://css-tricks.com/fitting-text-to-a-container/)_._
+_We’re just populating cells inside of columns and rows with `Palette[y].name` SVG text painted in `Palette[x].code`. Why SVG? Because it’s one of the simplest ways to [fit text into the container](https://css-tricks.com/fitting-text-to-a-container/)._
 
-And this is the heart of that game:
+## Game Logic
+
+This is the heart of that game:
 
 ```javascript
 React._useEffect_(() => {
@@ -222,7 +249,9 @@ React._useEffect_(() => {
 
 _It’s a timer inside a useEffect hook. If the game is active, we’re setting a new activeCell in the table, highlighting it, and removing the highlight from the previous one, going according to the direction and with a set speed._
 
-And this is how I manipulate SVG:
+## Manipulating SVG Elements
+
+This is how I manipulate SVG:
 
 ```javascript
 const underlineSVG = (address: number, highlight: boolean) => {
@@ -242,19 +271,21 @@ const underlineSVG = (address: number, highlight: boolean) => {
 };
 ```
 
-_We’re converting a one-dimensional number into a multidimensional array address and then highlighting or removing highlights from the text. This whole method is way faster than if we were to set a conditional style in dynamically created cells. Or, at least, I think so._
+_We’re converting a one-dimensional number into a multidimensional array address and then highlighting or removing highlights from the text._
 
-So, here is what it looks like:
+## Demo Screenshots
 
-![Multicolored words table in english](https://cdn-images-1.medium.com/max/800/1*8LLvfnyT29AlmYUZkQh-rg.png)
+![Multicolored words table in english](https://cdn-images-1.medium.com/max/800/1*8LLvfnyT29AlmYUZkQh-rg.png)  
 _Multicolored words table in English_
 
-![Multicolored words table in Russian](https://cdn-images-1.medium.com/max/800/1*gLDCHgxcr_YYpaC4GTOzog.png)
+![Multicolored words table in Russian](https://cdn-images-1.medium.com/max/800/1*gLDCHgxcr_YYpaC4GTOzog.png)  
 _Multicolored words table in Russian_
+
+## Wrapping Up
 
 There is much more in my app — simple routing, informational modals, translation, etc. The full code can be found [here](https://github.com/al3xsus/brain-train). And the working example is [here](https://al3xsus.github.io/brain-train/).
 
-This is not a finished product yet, I’ll gonna refactor it a bit and add new games and exercises in the future. Stay with me if you wanna see it!
+This is not a finished product yet, I’m going to refactor it a bit and add new games and exercises in the future. Stay with me if you wanna see it!
 
 [![Smiling Terminator](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2VhdmdsN251aDNkb3Y0Z2Z4aXdleW5jMmR5MHFjMTFhaDA4cmo3cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YjfAfZyzEoOZi/giphy.gif)](https://giphy.com/gifs/arnold-schwarzenegger-terminator-genisys-the-YjfAfZyzEoOZi)
 

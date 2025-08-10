@@ -1,9 +1,20 @@
 ---
+import { base } from "astro:config/server";
+
 const nav = [
   { name: "Posts", href: "/posts" },
   { name: "Projects", href: "/projects" },
 ];
-const currentPath = Astro.url.pathname;
+
+// Normalize function to strip base, trim slashes, and lowercase
+const normalize = (path: string) =>
+  path.replace(base, "").replace(/\/+$/, "").toLowerCase() || "/";
+
+// Normalize current path
+const currentPath = normalize(Astro.url.pathname);
+
+// Utility to check if nav item is active
+const isActive = (href: string) => normalize(href) === currentPath;
 ---
 
 <header
@@ -28,11 +39,11 @@ const currentPath = Astro.url.pathname;
               <a
                 href={item.href}
                 class={`hover:text-primary transition-colors ${
-                  currentPath === item.href
+                  isActive(item.href)
                     ? "text-primary underline underline-offset-4"
                     : ""
                 }`}
-                aria-current={currentPath === item.href ? "page" : undefined}
+                aria-current={isActive(item.href) ? "page" : undefined}
               >
                 {item.name}
               </a>
@@ -87,27 +98,57 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 </header>
+
 <script>
+  const patterns = ["grid-paper", "dot-grid"];
+  const defaultTheme = "light";
+  const defaultPattern = "grid-paper";
+
+  // Load saved preferences
+  const storedTheme = localStorage.getItem("theme") || defaultTheme;
+  const storedPattern = localStorage.getItem("background") || defaultPattern;
+
+  // Apply theme class early
+  if (storedTheme === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+
+  // Apply background pattern class early
+  document.body.classList.add(storedPattern);
+
   document.addEventListener("DOMContentLoaded", () => {
+    const pattern = localStorage.getItem("background") || "grid-paper";
+    document.body.classList.add(pattern);
+
     const themeBtn = document.getElementById("theme-toggle");
     const themeIconSun = document.getElementById("sun-icon");
     const themeIconMoon = document.getElementById("moon-icon");
 
+    const bgBtn = document.getElementById("bg-toggle");
+
+    // Set initial icons
+    const isDark = document.documentElement.classList.contains("dark");
+    themeIconSun.classList.toggle("hidden", isDark);
+    themeIconMoon.classList.toggle("hidden", !isDark);
+
+    // Theme toggle
     themeBtn.addEventListener("click", () => {
-      document.documentElement.classList.toggle("dark");
-      const isDark = document.documentElement.classList.contains("dark");
-      themeIconSun.classList.toggle("hidden", isDark);
-      themeIconMoon.classList.toggle("hidden", !isDark);
+      const html = document.documentElement;
+      const isNowDark = html.classList.toggle("dark");
+      localStorage.setItem("theme", isNowDark ? "dark" : "light");
+      themeIconSun.classList.toggle("hidden", isNowDark);
+      themeIconMoon.classList.toggle("hidden", !isNowDark);
     });
 
-    const bgBtn = document.getElementById("bg-toggle");
-    const patterns = ["grid-paper", "dot-grid"];
-    let index = 0;
-
+    // Background toggle
     bgBtn.addEventListener("click", () => {
-      document.body.classList.remove(...patterns);
-      index = (index + 1) % patterns.length;
-      document.body.classList.add(patterns[index]);
+      const body = document.body;
+      const current =
+        patterns.find((p) => body.classList.contains(p)) || defaultPattern;
+      const next = patterns[(patterns.indexOf(current) + 1) % patterns.length];
+      body.classList.remove(...patterns);
+      body.classList.add(next);
+      localStorage.setItem("background", next);
     });
   });
 </script>

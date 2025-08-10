@@ -19,7 +19,20 @@ linkedinURL: "https://www.linkedin.com/pulse/how-not-write-good-software-al3xsus
 project: "media-creation-tool-mockup"
 ---
 
+# Why Microsoft's Media Creation Tool Is a UX Disaster (And How I’d Fix It)
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [So, what exactly has happened, and why was it so frustrating?](#so-what-exactly-has-happened-and-why-was-it-so-frustrating)
+3. [Lessons to learn](#lessons-to-learn)
+4. [A picture is worth a thousand words](#a-picture-is-worth-a-thousand-words)
+5. [Why did I write all of this?](#why-did-i-write-all-of-this)
+6. [Special thanks to](#special-thanks-to)
+
 ![Cover image - how not to write good software](https://media.licdn.com/dms/image/v2/D4E12AQHgDt2jmON5QQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1673438891038?e=1758758400&v=beta&t=8JLmx8VFKC7yC9sl7AV11DMWxkCnEuB3B6FWtEcpdLI)
+
+## Introduction
 
 Dear [Microsoft](https://www.linkedin.com/company/microsoft/people/) people.
 
@@ -29,7 +42,7 @@ Yes, I'm talking about the Media Creation Tool. Recently, I've used it. And my e
 
 ---
 
-**So, what exactly has happened, and why was it so frustrating? Let's get started:**
+## So, what exactly has happened, and why was it so frustrating?
 
 First of all, multiple "_Getting a few things ready_" screens. What things, guys? Why does it require time? Why don't you want to be more specific and give the user more info? Why do you hate feedback?
 
@@ -50,7 +63,7 @@ When I experienced this and other troubles, I just gave up and went to the pirat
 
 ---
 
-**Lessons to learn**
+## Lessons to learn
 
 I got it, **Microsoft is a poor company** that can't spend more money on designers and developers, so I'll help you to form a better view of a future tool, and I'll do it for free:
 
@@ -94,7 +107,7 @@ That's it. We did it, Patric. We've built a better Media Creation Tool. However,
 
 ---
 
-**A picture is worth a thousand words**
+## A picture is worth a thousand words
 
 So I created a really small React SPA. It can be found [here](https://al3xsus.github.io/media-creaton-tool-mockup/).
 
@@ -102,13 +115,13 @@ It's a very crude and basic mockup, but I think it could illustrate my points.
 
 ---
 
-**Why did I write all of this?**
+## Why did I write all of this?
 
 I do not doubt that there wouldn't be any changes in the Media Creation Tool at all, because Windows 11 is a top priority. But I can only hope that the next instrument for creating a bootable device from Microsoft would be more user-friendly, more advanced, more useful, and provide a better and smoother experience. Because, you know, it's a shame that such a big corporation cannot build a tool on par with free and open-source utilities, like [UNetbootin](https://unetbootin.github.io/) or [Etcher](https://www.balena.io/etcher).
 
 ---
 
-**Special thanks to:**
+## Special thanks to:
 
 - [https://uxwing.com/](https://uxwing.com/) for free icons
 - [https://neumorphism.io/](https://neumorphism.io/) for soft UI
