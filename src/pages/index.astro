@@ -4,6 +4,8 @@ import myImage from "../images/myPhoto.jpg"; // Image is 1600x900
 
 import LatestEntry from "../components/LatestEntry.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import VisualCoreComplex from "../components/VisualCoreComplex";
+import HeroElement from "../components/HeroElement";
 ---
 
 <BaseLayout title="Home" description="Welcome to my blog!">
@@ -44,7 +46,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <section
       class="container flex items-center justify-center animate-slide-up sm:col-span-3 md:col-span-1"
     >
-      <h2 class="text-xl font-semibold">Card Two</h2>
+      <HeroElement client:load />
     </section>
 
     <section

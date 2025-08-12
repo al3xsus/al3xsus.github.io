@@ -1,7 +1,4 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import { useTheme } from "next-themes";
+import { useEffect, useRef } from "preact/hooks";
 
 /**
  * LivingSphere
@@ -9,10 +6,9 @@ import { useTheme } from "next-themes";
  * Animated 2D canvas simulating a pseudo-3D rotating dot sphere.
  * Clean, minimalistic version — no user interaction effects.
  */
-export default function VisualCore() {
+export default function VisualCoreComplex({ theme }: { theme: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
 
   useEffect(() => {
     // === Setup canvas and context ===
@@ -39,8 +35,6 @@ export default function VisualCore() {
     let projectionCenterY = height / 2;
     let fieldOfView = width * 0.8;
     const dots: Dot[] = [];
-
-    const mode = theme?.split("-")[0] ?? "blueprint"; // Extract mode from theme
 
     // === Utility: Resize canvas ===
     function resizeCanvas() {
@@ -80,11 +74,11 @@ export default function VisualCore() {
        */
       updateGeometry(t: number) {
         const rMod =
-          mode === "sustainable"
+          theme === "sustainable"
             ? 0.85 + 0.15 * Math.sin(t + this.theta * 2)
-            : mode === "journal"
+            : theme === "journal"
             ? 1.0 + 0.1 * Math.cos(t + this.phi * 2)
-            : mode === "deco"
+            : theme === "deco"
             ? 0.95 + 0.05 * Math.sin(t * 2)
             : 1;
 
@@ -134,7 +128,8 @@ export default function VisualCore() {
           ctx.beginPath();
           ctx.moveTo(this.xProject, this.yProject);
           ctx.lineTo(other.xProject, other.yProject);
-          ctx.strokeStyle = accent + (mode === "deco" ? "33" : "55");
+          // Apply color and style based on theme, need to be reworked
+          ctx.strokeStyle = accent + (theme === "deco" ? "33" : "55");
           ctx.lineWidth = 0.4 * this.sizeProjection;
           ctx.stroke();
         }
@@ -159,6 +154,7 @@ export default function VisualCore() {
       const sin = Math.sin(rotation);
       const cos = Math.cos(rotation);
 
+      // Get accent color from CSS variable, need to be reworked
       const accent =
         getComputedStyle(document.documentElement)
           .getPropertyValue("--accent")
@@ -196,14 +192,11 @@ export default function VisualCore() {
   }, [theme]); // Re-run if theme changes (for color/mode)
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full h-full bg-bg rounded-full animate-fade-in"
-    >
+    <div ref={containerRef} className="w-full h-full animate-fade-in">
       <canvas
         ref={canvasRef}
-        className="w-full h-full rounded-full"
-        aria-label="Living Sphere Animated Shape"
+        className="w-full h-full"
+        aria-label="Animated Shape"
       />
     </div>
   );
