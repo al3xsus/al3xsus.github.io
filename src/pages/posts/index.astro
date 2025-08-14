@@ -8,7 +8,15 @@ const posts = await getCollection("posts");
 ---
 
 <BaseLayout title="Posts">
-  <Grid>
-    {posts.map((post) => <Card {...post} />)}
-  </Grid>
+  {
+    posts.length === 0 ? (
+      <p>No posts found.</p>
+    ) : (
+      <Grid>
+        {posts.map((post) => (
+          <Card {...post} />
+        ))}
+      </Grid>
+    )
+  }
 </BaseLayout>
