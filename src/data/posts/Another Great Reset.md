@@ -2,7 +2,7 @@
 title: "Another Great Reset"
 description: "A radical rethinking of sustainable living — moving cities to big waterways, embracing blue and green economies, and redesigning our way of life."
 slug: "another-great-reset"
-date: 2025-08-08
+created: 2025-08-08
 updated: 2025-08-08
 tags:
   [
@@ -12,15 +12,13 @@ tags:
     "green economy",
     "climate change",
   ]
-coverImage: "/images/posts/another-great-reset.jpg"
+coverImage: "https://miro.medium.com/v2/resize:fit:720/format:webp/0*qgqt3WUhNnJy4c6m.jpg"
 canonical: ""
 project: ""
 linkedinURL: ""
 devtoURL: ""
 mediumURL: ""
 ---
-
-# Another Great Reset 🌊🏙
 
 You’ve probably heard about the [Great Reset](https://www.weforum.org/great-reset/) — or at least seen memes about it.  
 But here’s my proposal for a _real_ reset: one that actually addresses the root problems.

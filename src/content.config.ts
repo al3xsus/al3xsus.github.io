@@ -7,7 +7,7 @@ const commonSchema = z.object({
   title: z.string(),
   description: z.string(),
   slug: z.string(),
-  date: z.date(),
+  created: z.date(),
   updated: z.date().optional(),
   tags: z.array(z.string()).optional(),
   coverImage: z.string().optional(),

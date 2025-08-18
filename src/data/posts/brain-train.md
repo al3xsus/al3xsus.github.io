@@ -2,7 +2,7 @@
 title: "How I Created a Brain Training Game in React – The Stroop Effect Project"
 description: "A deep dive into building a Stroop Effect game using React, TypeScript, and SVG — inspired by cognitive science and dedicated to my late mother."
 slug: "brain-train-react-ui"
-date: 2025-01-31
+created: 2025-01-31
 tags:
   [
     "react",
@@ -17,14 +17,12 @@ tags:
     "single-page-application",
     "cognitive-games",
   ]
-coverImage: "/images/posts/brain-train-cover.webp"
+coverImage: "https://raw.githubusercontent.com/al3xsus/brain-train/refs/heads/main/public/images/brain-train-cover.webp"
 canonical: "brain-train-react-ui"
 linkedinURL: ""
 mediumURL: "https://levelup.gitconnected.com/web-application-for-a-brain-training-23dc567f0315"
 project: "brain-train"
 ---
-
-# How To Create a Web Application For Brain Training with React. Part I.
 
 > I started to work on this a long time ago. It was intended for my mother, but she didn’t use it much, she passed away due to COVID-19 last year. But I still hope that my work could be helpful for many people.
 

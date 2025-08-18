@@ -2,21 +2,17 @@
 title: "Ultimate Helper for the Circular Economy"
 description: "An AI-powered waste sorting station that helps users efficiently sort recyclable materials like glass, paper, textile, e-waste, plastics, and metals."
 slug: "ai-powered-waste-sorting-station"
-date: 2025-08-08
+created: 2025-08-08
 updated: 2025-08-08
 tags:
   ["AI", "circular economy", "waste management", "recycling", "sustainability"]
-coverImage: "/images/posts/waste-sorting-station.jpg"
+coverImage: "https://github.com/al3xsus/AI-powered-waste-sorting-station/blob/main/images/photo-collage.png.png?raw=true"
 canonical: ""
 project: ""
 linkedinURL: ""
 devtoURL: ""
 mediumURL: ""
 ---
-
-# Ultimate Helper for the Circular Economy ♻️🤖
-
-Inexpensive and compact, this AI-powered waste sorting station helps users sort their waste — especially glass, paper and cardboard, textiles, e-waste, plastics, and metals — turning highly recyclable resources away from landfills.
 
 ---
 

@@ -4,10 +4,11 @@ import BaseLayout from "./BaseLayout.astro";
 const {
   title,
   description = "",
-  datePublished,
-  dateModified = datePublished,
-  image = "",
+  created,
+  updated = created,
+  coverImage = "",
   url = "",
+  tags = [],
 } = Astro.props;
 ---
 
@@ -15,26 +16,68 @@ const {
   title={title}
   description={description}
   url={url}
-  ogImage={image}
+  ogImage={coverImage}
   isBlogPost={true}
   blogPostData={{
     title,
     description,
-    logo: image,
-    image,
-    datePublished,
-    dateModified,
+    logo: coverImage,
+    coverImage,
+    created,
+    updated,
   }}
 >
   <article
     class="max-w-7xl m-auto p-auto prose dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight prose-headings:leading-tight prose-p:text-foreground/80 dark:prose-p:text-foreground/60 prose-a:text-primary dark:prose-a:text-primary/80"
   >
-    <header class="mb-8">
+    <section class="mb-8">
+      {
+        coverImage && (
+          <img
+            src={coverImage}
+            alt={title}
+            class="w-full h-auto rounded-lg mb-4"
+          />
+        )
+      }
+    </section>
+    <section class="mb-8">
+      <h1 class="text-3xl font-bold tracking-tight mb-2">{title}</h1>
+      {
+        description && (
+          <p class="text-lg italic text-foreground/80 dark:text-foreground/60 mb-4">
+            {description}
+          </p>
+        )
+      }
       <p class="text-sm text-foreground/60 dark:text-foreground/50">
-        Published on {new Date(datePublished).toLocaleDateString()}
+        Published on {new Date(created).toLocaleDateString()} · Last updated on {
+          new Date(updated).toLocaleDateString()
+        }
       </p>
-    </header>
-
+      {
+        tags.length > 0 && (
+          <div class="mb-4">
+            <span class="text-sm text-foreground/60 dark:text-foreground/50">
+              Tags:
+            </span>
+            <ul class="inline-flex space-x-2 ml-2 list-none">
+              {tags.map((tag: string) => (
+                <li>
+                  <a
+                    href={`/tags/${tag}`}
+                    class="text-primary dark:text-primary/80 hover:underline"
+                  >
+                    #{tag}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </section>
+    <section class="mb-8">Time to read: ~ minutes</section>
     <slot />
   </article>
 </BaseLayout>

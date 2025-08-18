@@ -2,18 +2,16 @@
 title: "Building a Streamlit Photo Collage Maker with Python and PIL"
 description: "A step-by-step guide to creating a versatile photo collage app with multiple layout options using Streamlit and Pillow."
 slug: "streamlit-photo-collage-maker"
-date: 2025-08-08
+created: 2025-08-08
 updated: 2025-08-08
 tags: ["Python", "Pillow", "Streamlit", "image processing", "photo collage"]
-coverImage: "/images/posts/streamlit-photo-collage.jpg"
+coverImage: "https://raw.githubusercontent.com/al3xsus/photo-collage/refs/heads/main/images/photo-collage-cover.webp"
 canonical: ""
 project: ""
 linkedinURL: ""
 devtoURL: ""
 mediumURL: ""
 ---
-
-# Building a Streamlit Photo Collage Maker with Python and PIL 🖼️🐍
 
 Recently, I tried to make a simple collage with ChatGPT. It didn’t work out as planned, so I used [Pixlr’s collage maker](https://pixlr.com/photo-collage/) instead. That inspired me to create my **own** app — and here’s the journey.
 

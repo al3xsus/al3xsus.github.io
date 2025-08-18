@@ -2,7 +2,7 @@
 title: "Walk to Mordor: An Interactive Treadmill Adventure"
 description: "Turn your workout into an epic fantasy quest by following Frodo’s journey to Mordor on an AI-powered treadmill."
 slug: "interactive-treadmill-walk-to-mordor"
-date: 2025-08-08
+created: 2025-08-08
 updated: 2025-08-08
 tags:
   [
@@ -12,15 +12,13 @@ tags:
     "Lord of the Rings",
     "startup idea",
   ]
-coverImage: "/images/posts/walk-to-mordor-treadmill.jpg"
+coverImage: "https://media.licdn.com/dms/image/v2/D4E12AQH4Ed5rti6zow/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1724403025702?e=1761177600&v=beta&t=nb5fTr5g8BuPeQwW-XJss5tGzgK6QUjGLhifM5_I3JM"
 canonical: ""
 project: ""
 linkedinURL: ""
 devtoURL: ""
 mediumURL: ""
 ---
-
-# Walk to Mordor: An Interactive Treadmill Adventure 🏃‍♂️🗺️
 
 **Imagine combining an epic fantasy world with your workout routine, turning exercise into an immersive adventure.**
 

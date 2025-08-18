@@ -2,7 +2,7 @@
 title: "Why Microsoft's Media Creation Tool Is a UX Disaster (And How I’d Fix It)"
 description: "A brutally honest teardown of Microsoft’s Media Creation Tool UX — and a step-by-step proposal to redesign it from scratch with real user empathy."
 slug: "media-creation-tool-redesign"
-date: 2025-02-01
+created: 2025-02-01
 tags:
   [
     "UX",
@@ -19,8 +19,6 @@ linkedinURL: "https://www.linkedin.com/pulse/how-not-write-good-software-al3xsus
 project: "media-creation-tool-mockup"
 ---
 
-# Why Microsoft's Media Creation Tool Is a UX Disaster (And How I’d Fix It)
-
 ## Table of Contents
 
 1. [Introduction](#introduction)
@@ -29,8 +27,6 @@ project: "media-creation-tool-mockup"
 4. [A picture is worth a thousand words](#a-picture-is-worth-a-thousand-words)
 5. [Why did I write all of this?](#why-did-i-write-all-of-this)
 6. [Special thanks to](#special-thanks-to)
-
-![Cover image - how not to write good software](https://media.licdn.com/dms/image/v2/D4E12AQHgDt2jmON5QQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1673438891038?e=1758758400&v=beta&t=8JLmx8VFKC7yC9sl7AV11DMWxkCnEuB3B6FWtEcpdLI)
 
 ## Introduction
 

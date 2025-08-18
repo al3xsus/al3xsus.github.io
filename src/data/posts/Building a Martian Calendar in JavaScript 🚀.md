@@ -2,10 +2,10 @@
 title: "The Martian Weekday Challenge"
 description: "Solving a programming puzzle about Mars' unique calendar with an 8-day week and leap years."
 slug: "martian-weekday-challenge"
-date: 2025-08-08
+created: 2025-08-08
 updated: 2025-08-08
 tags: ["JavaScript", "algorithms", "coding challenge", "programming puzzles"]
-coverImage: "/images/posts/martian-weekdays.jpg"
+coverImage: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fpkj883zlqfa54g431g4u.jpg"
 canonical: ""
 project: ""
 linkedinURL: ""
@@ -13,74 +13,52 @@ devtoURL: ""
 mediumURL: ""
 ---
 
-# The Martian Weekday Challenge 🚀🪐
-
-Imagine you're on Mars. One Martian year takes **668 Martian days** to orbit the Sun. There’s an **8-day week** — due to two moons, Mars has **Monday1** and **Monday2**, so the week looks like this:
-
-```
-Sun, M1, M2, Tue, Wed, Thu, Fri, Sat
-```
+Imagine you're on Mars. One Martian year takes 668 Martian days to complete one circle around the sun. There is an 8-day week - due to 2 moons, Mars has Monday1 and Monday2, so the week looks like that: _Sun, M1, M2, Tue, Wed, Thu, Fri, Sat_.
 
 <figure>
-<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yee1b3t0uooove9vir7h.gif" alt="Two Mondays reaction gif" title="Monday mood"/>
-<figcaption>Two Mondays. Jesus Christ.</figcaption>
+<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yee1b3t0uooove9vir7h.gif" alt="Monday mood gif" title="Monday mood"/>
+<figcaption>Two Mondays, Jesus Christ</figcaption>
 </figure>
 
-But every **5th year** is special — a leap year where **the second Monday doesn’t exist**. The week then has 7 days.
+But fear not! Sometimes (every 5th year) there is a special leap year, where the second Monday does not exist!
 
 <figure>
-<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/91oo71yu1dw0o1mily0r.gif" alt="Relief thank you gif" title="Thank you, universe"/>
-<figcaption>Thank you, universe.</figcaption>
+<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/91oo71yu1dw0o1mily0r.gif" alt="Thank you gif" title="Thank you"/>
+<figcaption>Thank you, universe</figcaption>
 </figure>
 
-It’s still **668 days long**, and the Martian calendar starts on a Sunday.
+It still takes 668 days, though. And we know that the Martian date system started on Sunday. Your task is to create a script that will take an array of format `[year, day]` on input and return the weekday string.
+For example,
 
----
+```
+Input: [1, 1]
+Output: "Sun"
 
-## 📑 Table of Contents
+Input: [2, 1]
+Output: "Wed"
 
-- [The Task](#the-task)
-- [My Mistake](#my-mistake)
-- [Constants](#constants)
-- [Helper Functions](#helper-functions)
-- [Main Function](#main-function)
-- [Testing](#testing)
-- [Lessons Learned](#lessons-learned)
-
----
-
-## 🧩 The Task
-
-You’re given `[year, day]` and must return the weekday string.
-
-**Examples:**
-
-```plaintext
-Input: [1, 1] → "Sun"
-Input: [2, 1] → "Wed"
-Input: [5, 2] → "M1"
+Input: [5, 2]
+Output: "M1"
 ```
 
----
+So that was a rather simple assessment, and I failed it. No matter how I tried, my code didn't pass all the tests. So I took the L and went home. In a more calm situation, I have to look at the task again and a time to think.
 
-## ❌ My Mistake
+![Took the L](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kb9knx0iyb8o40kcnh2i.jpg)
 
-I failed this in a timed assessment. I assumed **year 0, day 0** as the starting point, but the clue was in the example:
+People, who spend enough time cracking LeetCode assessments or stuff like that probably already knew, what was the core problem. For those, who don't get it - since there were no specifications except for Sunday, I assumed, that starting point was year 0, day 0.
 
-```plaintext
-[1, 1] → "Sun"
+![Wrong gif](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/iqzja3mxi26nx9y62y2h.gif)
+
+The hint was painfully close yet I didn't pay attention.
+
+```
+Input: [1, 1]
+Output: "Sun"
 ```
 
-That **only works** if `[1, 1]` _is_ the start.
-
-<figure>
-<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/iqzja3mxi26nx9y62y2h.gif" alt="Wrong assumption gif" title="Wrong assumption"/>
-<figcaption>The hint was right there, and I missed it.</figcaption>
-</figure>
-
----
-
-## 📦 Constants
+That could **ONLY** work if [1, 1] **IS** the starting point.
+Anyway, we're here to learn from our mistakes. Let's write the proper code, clean and refined.
+Starting from constants:
 
 ```javascript
 const REGULAR_YEAR_WEEK = [
@@ -96,15 +74,13 @@ const REGULAR_YEAR_WEEK = [
 const LEAP_YEAR_WEEK = ["Sun", "M1", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const DAYS_IN_YEAR = 668;
-const REGULAR_YEAR_OFFSET = DAYS_IN_YEAR % REGULAR_YEAR_WEEK.length; // 4
-const LEAP_YEAR_OFFSET = DAYS_IN_YEAR % LEAP_YEAR_WEEK.length; // 3
+const REGULAR_YEAR_OFFSET = DAYS_IN_YEAR % REGULAR_YEAR_WEEK.length; // 668 % 8 = 4
+const LEAP_YEAR_OFFSET = DAYS_IN_YEAR % LEAP_YEAR_WEEK.length; // 668 % 7 = 3
 ```
 
-Offsets are how many days the weekday shifts each year.
+I think it's self-explanatory at this point, offsets are how many days the weekday shifts each year.
 
----
-
-## 🛠 Helper Functions
+Next, helper functions:
 
 ```javascript
 function isLeapYear(year) {
@@ -120,18 +96,16 @@ function getYearlyOffset(year) {
 }
 ```
 
----
-
-## 🧮 Main Function
+And finally, the main function:
 
 ```javascript
 function getMartianWeekday([targetYear, targetDay]) {
-  // Year 1 shortcut
+  // Edge case: Year 1 (Direct lookup)
   if (targetYear === 1) {
     return REGULAR_YEAR_WEEK[(targetDay - 1) % REGULAR_YEAR_WEEK.length];
   }
 
-  let currentWeekdayIndex = 0; // 'Sun'
+  let currentWeekdayIndex = 0; // Starts at 'Sun'
 
   // Step 1: Advance through past years
   for (let y = 1; y < targetYear; y++) {
@@ -148,17 +122,16 @@ function getMartianWeekday([targetYear, targetDay]) {
 }
 ```
 
----
-
-## 🧪 Testing
+Simulating test cases:
 
 ```javascript
+// Test Cases
 console.log(getMartianWeekday([1, 1]) === "Sun");
 console.log(getMartianWeekday([2, 1]) === "Wed");
 console.log(getMartianWeekday([5, 2]) === "M1");
 ```
 
-Results:
+And got the right results:
 
 ```
 true
@@ -166,19 +139,12 @@ true
 true
 ```
 
----
+Yeah, it's **THAT** simple.
 
-## 📚 Lessons Learned
+So, what is the moral?
 
-1. **Read carefully** — the example `[1, 1]` was the key.
-2. **Prepare** — practice small logical challenges often.
-3. **Failure is feedback** — adjust and try again.
+1. Pay attention to the details. They could be not revealed in the main text, but be available as hints somewhere else.
+2. Train and prepare.
+3. Even if we fail, that's just a lesson. Get up and continue.
 
-<figure>
-<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kb9knx0iyb8o40kcnh2i.jpg" alt="Person accepting defeat" title="Took the L"/>
-<figcaption>Sometimes you just take the L and move on — but learn from it.</figcaption>
-</figure>
-
----
-
-_Thanks for reading! Share your thoughts in the comments._
+Thanks for the attention! Share your opinion in the comments.

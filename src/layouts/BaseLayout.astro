@@ -112,8 +112,8 @@ const {
             "url": blogPostData.logo || ogImage
           }
         },
-        "datePublished": blogPostData.datePublished,
-        "dateModified": blogPostData.dateModified || blogPostData.datePublished,
+        "created": blogPostData.created,
+        "updated": blogPostData.updated || blogPostData.created,
         "mainEntityOfPage": {
           "@type": "WebPage",
           "@id": url
