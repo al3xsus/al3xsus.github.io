@@ -19,7 +19,23 @@ No, I don’t mean it’s not a thing anymore. Rather, I suppose you can safely 
 
 ---
 
-## 📧 Email Signature as the New Business Card
+## Table of Contents
+
+- [Email Signature as the New Business Card](#-email-signature-as-the-new-business-card)
+- [Three Ways to Create an Email Signature](#-three-ways-to-create-an-email-signature)
+- [Building a Signature Generator App](#️-building-a-signature-generator-app)
+- [State and Hooks](#-state-and-hooks)
+- [Form Example](#-form-example)
+- [Logo & Social Icons](#-logo--social-icons)
+- [Signature Template (Table Layout)](#-signature-template-table-layout)
+- [Styling & Tips](#-styling--tips)
+- [Result](#-result)
+- [Links](#-links)
+- [Thoughts](#-thoughts)
+
+---
+
+## Email Signature as the New Business Card
 
 The most straightforward modern equivalent is the **email signature** — a simple yet effective way to give additional or even primary data about the sender, like company name, position, Skype, telephone number, and social media links.
 
@@ -32,7 +48,7 @@ Why use an email signature?
 
 ---
 
-## 🛠 Three Ways to Create an Email Signature
+## Three Ways to Create an Email Signature
 
 1. **Directly in Gmail** — using its basic visual editor (not user-friendly, time-consuming).
 2. **Using an HTML template** created by someone else (requires storage and reuse strategy).
@@ -40,7 +56,7 @@ Why use an email signature?
 
 ---
 
-## ⚙️ Building a Signature Generator App
+## Building a Signature Generator App
 
 We’ll create a small internal site using **React** and **Material UI**. It will generate two types of signatures — with and without a photo — and include fields for full name, position, phone, Skype, and social media links.
 
@@ -62,7 +78,7 @@ Add Roboto font in `public/index.html`:
 
 ---
 
-## 📦 State and Hooks
+## State and Hooks
 
 ```typescript
 export interface PhotoSignatureProps {
@@ -107,7 +123,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
 ---
 
-## 📝 Form Example
+## Form Example
 
 ```tsx
 <form className={classes.root} noValidate autoComplete="off">
@@ -149,7 +165,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
 ---
 
-## 🖼 Logo & Social Icons
+## Logo & Social Icons
 
 - Avoid SVGs — Gmail blocks them.
 - Avoid base64 — Gmail doesn’t support it and size limits apply.
@@ -158,7 +174,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
 ---
 
-## 🧩 Signature Template (Table Layout)
+## Signature Template (Table Layout)
 
 ```tsx
 <table cellPadding={0} cellSpacing={0} className="signature">
@@ -209,7 +225,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
 ---
 
-## 🎨 Styling & Tips
+## Styling & Tips
 
 1. Use email-safe fonts.
 2. Hyperlinks in Gmail display in default styles — use images as links for branding.
@@ -217,7 +233,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
 ---
 
-## 📷 Result
+## Result
 
 ![Signature generator preview](https://miro.medium.com/v2/resize:fit:700/1*8uQU2GRRisx0mvcVuY9q2Q.png)  
 _Main app interface_
@@ -230,14 +246,14 @@ _Signature with photo_
 
 ---
 
-## 🔗 Links
+## Links
 
 - [Source Code](https://github.com/al3xsus/email-signature-generator)
 - [Live Demo](https://al3xsus.github.io/email-signature-generator/)
 
 ---
 
-## 💭 Thoughts
+## Thoughts
 
 1. Email signatures aren’t trivial, but they’re not overly complex either.
 2. This is a skeleton — you can expand it with multiple templates, photo upload, custom colors, etc.

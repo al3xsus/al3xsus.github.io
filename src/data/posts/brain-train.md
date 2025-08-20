@@ -1,7 +1,7 @@
 ﻿---
 title: "How I Created a Brain Training Game in React – The Stroop Effect Project"
 description: "A deep dive into building a Stroop Effect game using React, TypeScript, and SVG — inspired by cognitive science and dedicated to my late mother."
-slug: "brain-train-react-ui"
+slug: "brain-train"
 created: 2025-01-31
 tags:
   [
@@ -34,7 +34,9 @@ What does that mean for us? We must be prepared to live longer, work harder (sin
 
 Let’s go step by step and implement just one exercise. For now.
 
-## 📑 Table of Contents
+---
+
+## Table of Contents
 
 1. [Game of Words and Colors](#game-of-words-and-colors)
 2. [Project Setup](#project-setup)

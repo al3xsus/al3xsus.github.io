@@ -24,7 +24,17 @@ mediumURL: ""
 
 ---
 
-## 💡 The Concept
+## Table of Contents
+
+1. [The Concept](#-the-concept)
+2. [The Challenge: Walk to Mordor (Yes, Really!)](#️-the-challenge-walk-to-mordor-yes-really)
+3. [Why It Matters (Apart from the Fact That It's Awesome)](#-why-it-matters-apart-from-the-fact-that-its-awesome)
+4. [Why It’s Better Than the Competition](#-why-its-better-than-the-competition)
+5. [The Future of Fitness (and Fun)](#-the-future-of-fitness-and-fun)
+
+---
+
+## The Concept
 
 The interactive treadmill is not just another piece of exercise equipment, but a **portal to another world**, designed to **train and entertain** users by merging physical fitness with adventures. The trio — the treadmill, computer, and big screen — transports you to various interactive worlds, powered by the latest AI technology.
 
@@ -32,7 +42,7 @@ For simplicity’s sake, let’s focus on one scenario that many fantasy lovers 
 
 ---
 
-## 🏔️ The Challenge: Walk to Mordor (Yes, Really!)
+## The Challenge: Walk to Mordor (Yes, Really!)
 
 Forget about the usual "10,000 steps a day" challenge. How about covering **1,770 miles** (or **2,850 kilometers**) instead? Yep — with our treadmill, you can take on Frodo's journey to Mordor — one step at a time.
 
@@ -49,7 +59,7 @@ The treadmill, powered by AI, tracks your progress with precision, offering real
 
 ---
 
-## 🎯 Why It Matters (Apart from the Fact That It's Awesome)
+## Why It Matters (Apart from the Fact That It's Awesome)
 
 Sure, you could burn calories the old-fashioned way, but where’s the fun in that? This concept is more than just slapping a story on a workout — it's about turning your fitness routine into something you actually look forward to.
 
@@ -59,7 +69,7 @@ By tying your workout to Frodo’s quest, we’re not just getting you to move m
 
 ---
 
-## 🆚 Why It’s Better Than the Competition
+## Why It’s Better Than the Competition
 
 Now, you might be thinking, “This sounds great, but isn’t something this epic going to cost me a dragon’s hoard?”
 
@@ -69,7 +79,7 @@ While other setups might require you to shell out serious cash for a highly cust
 
 ---
 
-## 🚀 The Future of Fitness (and Fun)
+## The Future of Fitness (and Fun)
 
 I believe that the future of fitness lies in making exercise more engaging, immersive, and meaningful. Our startup aims to bring this vision to life by offering a range of interactive scenarios, with the journey of Frodo as just the beginning.
 

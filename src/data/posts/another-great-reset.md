@@ -25,7 +25,7 @@ But here’s my proposal for a _real_ reset: one that actually addresses the roo
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
 - [The Problem with the Current Agenda](#the-problem-with-the-current-agenda)
 - [Why We Must Return to the Big Water](#why-we-must-return-to-the-big-water)
@@ -41,14 +41,14 @@ But here’s my proposal for a _real_ reset: one that actually addresses the roo
 
 ---
 
-## ⚠️ The Problem with the Current Agenda
+## The Problem with the Current Agenda
 
 Yes, the WEF’s goals — greener living, smarter growth — sound good. But they don’t address the root of the problem, and they don’t “reset” much.
 
 ![Meme about the Great Reset](https://miro.medium.com/v2/resize:fit:700/0*Oo18Z5Ofiq6oj4x0.jpg)  
 _The Great Reset meme — internet culture has embraced and parodied the concept._
 
-## 🌊 Why We Must Return to the Big Water
+## Why We Must Return to the Big Water
 
 We should rebuild our way of life around **big navigable rivers, lakes, seas, and oceans**.
 
@@ -63,7 +63,7 @@ Reasons:
 - Recreational and tourism potential
 - [Aquaculture](https://en.wikipedia.org/wiki/Aquaculture) to feed growing populations
 
-## 🏙 Rethinking City Locations
+## Rethinking City Locations
 
 Cities without access to major water sources should be **abandoned or repurposed**.  
 Examples: Soviet-era cities in the steppe built for a single industry.
@@ -82,7 +82,7 @@ Sustainable cities should:
 ![Map of US megaregions](https://miro.medium.com/v2/resize:fit:700/0*qpVUQPCNAdNi-sJE.png)  
 _Megaregions of the USA — many have stronger ties to regions across borders._
 
-## 🌐 Economic and Cultural Ties Over Borders
+## Economic and Cultural Ties Over Borders
 
 Borders often hinder natural economic flows.  
 Some cities should:
@@ -93,7 +93,7 @@ Some cities should:
 
 See: [Megaregions of the USA](https://www.visualcapitalist.com/ranked-the-megaregions-driving-the-global-economy/)
 
-## 🏢 New Architecture
+## New Architecture
 
 - Arcologies and mega-towers
 - Use local and recycled materials
@@ -103,7 +103,7 @@ See: [Megaregions of the USA](https://www.visualcapitalist.com/ranked-the-megare
 ![Urban garden rooftops](https://miro.medium.com/v2/resize:fit:700/0*qgqt3WUhNnJy4c6m.jpg)  
 _Urban gardens on rooftops improve sustainability and city livability._
 
-## ⚙️ New Workplaces and Economies
+## New Workplaces and Economies
 
 - Strengthen green and [blue economies](https://en.wikipedia.org/wiki/Blue_economy)
 - Build or upgrade airports, railroads, ports
@@ -112,7 +112,7 @@ _Urban gardens on rooftops improve sustainability and city livability._
 ![Blue economy jobs](https://miro.medium.com/v2/resize:fit:700/0*iObcgLVlsfDdKEW2.jpg)  
 _Examples of blue economy-related industries._
 
-## 🥗 New Food
+## New Food
 
 We must diversify crops and seafood:
 
@@ -123,7 +123,7 @@ _Diversity in food crops is essential for long-term sustainability._
 
 Climate change threatens biodiversity: [More info](https://inhabitat.com/un-says-climate-change-is-threatening-global-food-diversity-and-could-cause-crop-extinctions/)
 
-## ♻️ More Recycling, Reusing, and Reducing
+## More Recycling, Reusing, and Reducing
 
 - Use plastics only for special purposes
 - Turn biodegradable waste into biogas and fertilizer
@@ -133,13 +133,13 @@ Climate change threatens biodiversity: [More info](https://inhabitat.com/un-says
 ![Recycling bins](https://miro.medium.com/v2/resize:fit:700/0*vJqGeKKiCfe2OVFr.jpg)  
 _More “R” — rethink, reduce, reuse, recycle, and repair._
 
-## 🛠 New Ways of Manufacturing
+## New Ways of Manufacturing
 
 - Build products locally with local materials
 - Use CNC machines, 3D printers, and modern manufacturing tools
 - Reduce dependence on imports
 
-## 🚧 Challenges and Flaws
+## Challenges and Flaws
 
 1. Risk of conflict over new borders
 2. Bureaucratic restrictions (e.g., UN ban on artificial island states)
@@ -149,7 +149,7 @@ _More “R” — rethink, reduce, reuse, recycle, and repair._
 6. Overpopulation in some suitable cities
 7. Natural hazards (e.g., tsunamis, rogue waves)
 
-## ✅ Conclusion
+## Conclusion
 
 This Great Reset plan focuses on sustainable urban planning, resource management, and economic realignment — rooted in living with and from the water.
 

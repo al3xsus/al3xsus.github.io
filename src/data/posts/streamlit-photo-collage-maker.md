@@ -17,7 +17,20 @@ Recently, I tried to make a simple collage with ChatGPT. It didn’t work out as
 
 ---
 
-## 📷 Source Images
+## Table of Contents
+
+1. [Source Images](#-source-images)
+2. [Square Grid Layout](#-square-grid-layout)
+3. [Strip & Stack Layouts](#-strip--stack-layouts)
+4. [Golden Ratio Layout](#-golden-ratio-layout)
+5. [Streamlit UI](#-streamlit-ui)
+6. [Auto Layout Detection](#-auto-layout-detection)
+7. [Final Steps](#-final-steps)
+8. [Thoughts](#-thoughts)
+
+---
+
+## Source Images
 
 I gathered images from Pexels, Pixabay, and Unsplash — a mix of square, vertical, and horizontal formats for different collage layouts.
 
@@ -25,7 +38,7 @@ _(Full image attribution list in original post)_
 
 ---
 
-## 🔲 Square Grid Layout
+## Square Grid Layout
 
 For square canvases, the most straightforward approach is an **X by X** grid:
 
@@ -46,7 +59,7 @@ if canvas_width == canvas_height:
 
 ---
 
-## ➖ Strip & Stack Layouts
+## Strip & Stack Layouts
 
 For rectangular canvases, we handle **one row** (horizontal) or **one column** (vertical):
 
@@ -64,7 +77,7 @@ elif orientation == "vertical":
 
 ---
 
-## 📐 Golden Ratio Layout
+## Golden Ratio Layout
 
 For a more artistic layout, I used the **golden ratio**:
 
@@ -79,7 +92,7 @@ else:  # Vertical split
 
 ---
 
-## 🖥️ Streamlit UI
+## Streamlit UI
 
 Streamlit made it simple to create an **interactive web app**. I defined constants for minimum/maximum images, padding, and common **social media sizes** with icons.
 
@@ -95,7 +108,7 @@ With session state and helper functions, the app keeps track of uploaded images,
 
 ---
 
-## 🤖 Auto Layout Detection
+## Auto Layout Detection
 
 If the user doesn’t choose, the app selects the best layout based on aspect ratios:
 
@@ -112,7 +125,7 @@ else:
 
 ---
 
-## 🏁 Final Steps
+## Final Steps
 
 - **Step 1**: Upload images
 - **Step 2**: Choose output size
@@ -125,7 +138,7 @@ else:
 
 ---
 
-## 💭 Thoughts
+## Thoughts
 
 1. **PIL** is great for images, but lacks SVG support.
 2. **Streamlit** is quick for small/medium projects, but for complex UI/UX, use JS.

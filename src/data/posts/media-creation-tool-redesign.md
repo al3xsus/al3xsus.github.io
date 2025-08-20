@@ -19,6 +19,8 @@ linkedinURL: "https://www.linkedin.com/pulse/how-not-write-good-software-al3xsus
 project: "media-creation-tool-mockup"
 ---
 
+---
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
@@ -27,6 +29,8 @@ project: "media-creation-tool-mockup"
 4. [A picture is worth a thousand words](#a-picture-is-worth-a-thousand-words)
 5. [Why did I write all of this?](#why-did-i-write-all-of-this)
 6. [Special thanks to](#special-thanks-to)
+
+---
 
 ## Introduction
 
