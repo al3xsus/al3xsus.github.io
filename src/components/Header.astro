@@ -1,5 +1,8 @@
 ---
+import { Picture } from "astro:assets";
 import { base } from "astro:config/server";
+
+import Logo from "../images/logo-dark.png";
 
 const nav = [
   { name: "Posts", href: "/posts" },
@@ -26,9 +29,14 @@ const isActive = (href: string) => normalize(href) === currentPath;
     class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4"
   >
     <!-- Logo / Site Title -->
-    <div class="text-lg font-semibold">
-      <a href="/" class="hover:text-primary transition-colors">My Blog</a>
-    </div>
+    <a href="/" class="hover:text-primary transition-colors">
+      <Picture
+        style={{ width: "4rem", height: "4rem" }}
+        src={Logo}
+        formats={["avif", "webp"]}
+        alt="A description of my image."
+      />
+    </a>
 
     <!-- Center Nav Links -->
     <nav aria-label="Main Navigation">
