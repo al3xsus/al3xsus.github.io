@@ -82,15 +82,15 @@ const techStack = data.techStack ?? [];
       {date} • {category}
     </p>
 
-    <p class="text-base text-foreground/10">
+    <p class="text-base text-foreground/60">
       {description}
     </p>
 
     {
       tags.length > 0 && (
         <ul class="flex flex-wrap gap-2 mt-2 text-sm text-foreground">
-          {tags.map((tag) => (
-            <li class="px-2 py-0.5 bg-secondary rounded">{tag}</li>
+          {tags.map((tag: string) => (
+            <li class="px-2 py-0.5 bg-secondary rounded list-none">{tag}</li>
           ))}
         </ul>
       )
@@ -131,8 +131,8 @@ const techStack = data.techStack ?? [];
     {
       techStack.length > 0 && (
         <ul class="flex flex-wrap gap-2 mt-2 text-sm text-primary">
-          {techStack.map((tech) => (
-            <li class="px-2 py-0.5 bg-primary/10 rounded">{tech}</li>
+          {techStack.map((tech: unknown) => (
+            <li class="px-2 py-0.5 bg-background rounded list-none">{tech}</li>
           ))}
         </ul>
       )

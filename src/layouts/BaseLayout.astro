@@ -28,10 +28,12 @@ const {
           if (localStorage.getItem("theme") === "dark") {
             document.documentElement.classList.add("dark");
           }
+          const pattern = localStorage.getItem("background") || "grid-paper";
+          document.body.classList.add(pattern);
+
         } catch (_) {}
       })();
     </script>
-    
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -125,9 +127,9 @@ const {
 
   </head>
   <body class="antialiased transition-colors duration-300">
-    <Header />
+     <Header />
   
-      <main id="main-content" role="main" tabindex="-1" class="flex-1 px-6 py-4">
+      <main id="main-content" role="main" tabindex="-1" class="flex-1 px-6 py-4 max-w-7xl m-auto p-auto">
         <slot />
       </main>
   
@@ -138,12 +140,7 @@ const {
           { name: "GitHub", url: "https://github.com/al3xsus", icon: "github" },
           { name: "Email", url: "mailto:al3xsus@pm.me", icon: "email" }
         ]}
-      />
-      <script>
-        const pattern = localStorage.getItem("background") || "grid-paper";
-        document.body.classList.add(pattern);
-      </script>
-      
+      />      
   </body>
   
 </html>

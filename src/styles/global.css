@@ -111,12 +111,20 @@ img {
   transition: box-shadow 0.3s;
 }
 
+.card img {
+  filter: grayscale(100%);
+}
+
 .dark .card {
   background-color: var(--color-surface-dark);
 }
 
 .card:hover {
   box-shadow: var(--shadow-lg);
+}
+
+.card:hover img {
+  filter: grayscale(0%);
 }
 
 .grid-layout {
@@ -177,6 +185,29 @@ img {
   width: 1.25rem;
   height: 1.25rem;
   fill: currentColor;
+}
+
+[type="button"] {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-dark);
+  color: var(--color-surface-light);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.dark [type="button"] {
+  background-color: var(--color-surface-light);
+  color: var(--color-surface-dark); 
+}
+
+[type="button"] svg {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--color-fg);
+  stroke: var(--color-fg);
 }
 
 /* ============================================ */
@@ -546,6 +577,9 @@ img {
 
 .dark .prose-p\:text-foreground\/60 p { color: var(--color-fg); opacity: 0.6; }
 .dark .prose-a\:text-primary\/80 a { color: var(--color-primary); opacity: 0.8; }
+.dark .prose img {
+  filter: brightness(0.75);
+}
 
 /* Special grid layouts */
 .grid-rows-\[1fr_2fr\] { grid-template-rows: 1fr 2fr; }
