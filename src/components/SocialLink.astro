@@ -30,5 +30,5 @@ const { name, url, icon } = Astro.props;
     </svg>
   </span>
 
-  <span>{name}</span>
+  {name && <span>{name}</span>}
 </a>

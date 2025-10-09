@@ -27,11 +27,7 @@ const {
 
     <!-- Center: Social Links -->
     <div class="flex justify-center md:justify-center gap-6">
-      {
-        social.map((link) => (
-          <SocialLink name={link.name} url={link.url} icon={link.icon} />
-        ))
-      }
+      {social.map((link) => <SocialLink url={link.url} icon={link.icon} />)}
     </div>
 
     <!-- Right: Last Updated -->
