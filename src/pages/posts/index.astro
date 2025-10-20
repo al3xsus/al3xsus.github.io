@@ -12,11 +12,11 @@ const posts = await getCollection("posts");
     posts.length === 0 ? (
       <p>No posts found.</p>
     ) : (
-      <Grid>
+      <section class="flex flex-col gap-8">
         {posts.map((post) => (
           <Card {...post} />
         ))}
-      </Grid>
+      </section>
     )
   }
 </BaseLayout>

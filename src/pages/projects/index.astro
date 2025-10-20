@@ -12,11 +12,11 @@ const projects = await getCollection("projects");
     projects.length === 0 ? (
       <p>No projects found.</p>
     ) : (
-      <Grid>
+      <section class="flex flex-col gap-8">
         {projects.map((project) => (
           <Card {...project} />
         ))}
-      </Grid>
+      </section>
     )
   }
 </BaseLayout>

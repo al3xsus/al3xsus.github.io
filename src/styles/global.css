@@ -402,7 +402,7 @@ img {
 .h-auto { height: auto; }
 .h-full { height: 100%; }
 
-.max-w-7xl { max-width: 80rem; }
+.max-w-7xl { max-width: 80ch; }
 
 /* Borders & Radii */
 .border { border-width: 1px; }
@@ -516,27 +516,8 @@ img {
 /* ============================================ */
 /* Responsive Design */
 /* ============================================ */
-@media (min-width: 640px) {
-  .sm\:col-span-3 { grid-column: span 3 / span 3; }
-  .sm\:grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-}
 
-@media (min-width: 768px) {
-  .md\:col-span-1 { grid-column: span 1 / span 1; }
-  .md\:col-span-3 { grid-column: span 3 / span 3; }
-  .md\:flex-row { flex-direction: row; }
-  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .md\:justify-center { justify-content: center; }
-  .md\:text-left { text-align: left; }
-  .md\:text-right { text-align: right; }
-  .md\:w-48 { width: 12rem; }
-  .md\:h-48 { height: 12rem; }
-}
-
-@media (min-width: 1024px) {
-  .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
+/* TODO */
 
 /* ============================================ */
 /* Custom Components - Prose Variants */

@@ -9,7 +9,7 @@ import HeroElement from "../components/HeroElement";
 ---
 
 <BaseLayout title="Home" description="Welcome to my blog!">
-  <div class="grid grid-rows-[1fr_2fr] grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="flex flex-col gap-4">
     <section
       class="md:col-span-3 card flex items-center justify-around animate-fade-in"
     >
@@ -30,23 +30,19 @@ import HeroElement from "../components/HeroElement";
     </section>
 
     <section
-      class="container flex-col items-center justify-center animate-slide-up sm:col-span-3 md:col-span-1"
+      class="flex flex-col items-center justify-center animate-slide-up gap-4"
     >
       <h3 class="text-md font-semibold text-center">Latest Post</h3>
       <LatestEntry collection="posts" />
+      <a href="/posts" class="text-sm underline mt-2">View all posts</a>
     </section>
 
     <section
-      class="container flex items-center justify-center animate-slide-up sm:col-span-3 md:col-span-1"
-    >
-      <HeroElement client:load />
-    </section>
-
-    <section
-      class="container flex-col items-center justify-center animate-slide-up sm:col-span-3 md:col-span-1"
+      class="flex flex-col items-center justify-center animate-slide-up gap-4"
     >
       <h3 class="text-md font-semibold text-center">Latest Project</h3>
       <LatestEntry collection="projects" />
+      <a href="/projects" class="text-sm underline mt-2">View all projects</a>
     </section>
   </div>
 </BaseLayout>
