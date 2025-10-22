@@ -2,8 +2,9 @@
 import { Picture } from "astro:assets";
 import { base } from "astro:config/server";
 
-import LogoDark from "../images/logo-dark.png";
-import LogoLight from "../images/logo-light.png";
+import ThemeButton from "./ThemeButton.tsx";
+import BackgroundPatternButton from "./BackgroundPatternButton.tsx";
+import DynamicLogo from "./DynamicLogo.tsx";
 
 const nav = [
   { name: "Posts", href: "/posts" },
@@ -29,13 +30,7 @@ const isActive = (href: string) => normalize(href) === currentPath;
   <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
     <!-- Logo / Site Title -->
     <a href="/" class="hover:text-primary transition-colors">
-      <Picture
-        id="logo"
-        class="w-16 h-16 md:w-10 md:h-10"
-        src={LogoLight}
-        formats={["avif", "webp"]}
-        alt="Main Logo, light mode."
-      />
+      <DynamicLogo client:load />
     </a>
 
     <!-- Center Nav Links -->
@@ -64,111 +59,8 @@ const isActive = (href: string) => normalize(href) === currentPath;
     <!-- Button Group: Theme + Background -->
     <div class="flex gap-1 border border-grid overflow-hidden">
       <!-- Theme Toggle -->
-      <button
-        type="button"
-        id="theme-toggle"
-        class="p-2 hover:bg-grid transition-colors rounded-lg"
-        aria-label="Toggle Dark Mode"
-      >
-        <svg id="theme-icon" class="w-5 h-5" viewBox="0 0 122.88 122.88">
-          <path
-            id="sun-icon"
-            d="M30 13.21a3.93 3.93 0 1 1 6.8-3.94L41.86 18a3.94 3.94 0 1 1-6.81 4L30 13.21Zm31.45 13a35.23 35.23 0 1 1-24.93 10.31A35.13 35.13 0 0 1 61.44 26.2ZM58.31 4a3.95 3.95 0 1 1 7.89 0v10.06a3.95 3.95 0 1 1-7.89 0V4Zm29.18 6.1A3.93 3.93 0 1 1 94.3 14l-5.06 8.76a3.93 3.93 0 1 1-6.81-3.92l5.06-8.75ZM109.67 30a3.93 3.93 0 1 1 3.94 6.81l-8.75 5.06a3.94 3.94 0 1 1-4-6.81l8.81-5.06Zm9.26 28.32a3.95 3.95 0 1 1 0 7.89h-10.11a3.95 3.95 0 1 1 0-7.89Zm-6.15 29.18a3.93 3.93 0 1 1-3.91 6.81l-8.76-5.06a3.93 3.93 0 1 1 3.89-6.82l8.75 5.06Zm-19.89 22.17a3.93 3.93 0 1 1-6.81 3.94L81 104.86a3.94 3.94 0 0 1 6.81-4l5.06 8.76Zm-28.32 9.26a3.95 3.95 0 1 1-7.89 0v-10.11a3.95 3.95 0 1 1 7.89 0v10.11Zm-29.18-6.15a3.93 3.93 0 0 1-6.81-3.91l5.06-8.76a3.93 3.93 0 1 1 6.81 3.89l-5.06 8.75ZM13.21 92.89a3.93 3.93 0 1 1-3.94-6.81L18 81a3.94 3.94 0 1 1 4 6.83l-8.76 5.06ZM4 64.57a3.95 3.95 0 1 1 0-7.89h10.06a3.95 3.95 0 1 1 0 7.89Zm6.1-29.18a3.93 3.93 0 1 1 3.9-6.81l8.76 5.06a3.93 3.93 0 1 1-3.92 6.81l-8.74-5.06Z"
-          ></path>
-          <path
-            id="moon-icon"
-            class="hidden"
-            d="M49.06 1.27C51.23.82 53.4.5 55.54.29c2.2-.21 4.38-.31 6.53-.29 1.21.01 2.18 1 2.17 2.21-.01.93-.6 1.72-1.42 2.03-9.15 3.6-16.47 10.31-20.96 18.62-4.42 8.17-6.1 17.88-4.09 27.68l.01.07c2.29 11.06 8.83 20.15 17.58 25.91 8.74 5.76 19.67 8.18 30.73 5.92l.07-.01c7.96-1.65 14.89-5.49 20.3-10.78 5.6-5.47 9.56-12.48 11.33-20.16.27-1.18 1.45-1.91 2.62-1.64.89.21 1.53.93 1.67 1.78 2.64 16.2-1.35 32.07-10.06 44.71-8.67 12.58-22.03 21.97-38.18 25.29-16.62 3.42-33.05-.22-46.18-8.86C14.52 104.1 4.69 90.45 1.27 73.83c-3.34-16.23.05-32.28 8.26-45.25C17.78 15.57 30.88 5.64 46.91 1.75c.31-.08.67-.16 1.06-.25h.01l1.08-.23z"
-          ></path>
-        </svg>
-      </button>
-
-      <!-- Background Pattern Toggle -->
-      <button
-        type="button"
-        id="bg-toggle"
-        class="p-2 hover:bg-grid transition-colors rounded-lg"
-        aria-label="Toggle Background Pattern"
-      >
-        <svg class="w-5 h-5" viewBox="0 0 24 24" stroke-linecap="round">
-          <path
-            id="grid-paper-icon"
-            d="M2 2v20h20V2zm19 6h-5V3h5zm-6-5v5H9V3zM3 9h5v6H3zm6 0h6v6H9zM8 3v5H3V3zM3 21v-5h5v5zm6-5h6v5H9zm12 5h-5v-5h5zm-5-6V9h5v6z"
-          ></path>
-
-          <path
-            stroke-width="2"
-            id="dot-grid-icon"
-            class="hidden"
-            d="M5.99 6H6m5.99 0H12m5.99 0H18M5.99 12H6m5.99 0H12m5.99 0H18M5.99 18H6m5.99 0H12m5.99 0H18"
-          ></path>
-        </svg>
-      </button>
+      <ThemeButton client:load />
+      <BackgroundPatternButton client:load />
     </div>
   </div>
 </header>
-
-<script>
-  const patterns = ["grid-paper", "dot-grid"];
-  const defaultTheme = "light";
-  const defaultPattern = "grid-paper";
-
-  // Load saved preferences
-  const storedTheme = localStorage.getItem("theme") || defaultTheme;
-  const storedPattern = localStorage.getItem("background") || defaultPattern;
-
-  // Apply theme class early
-  if (storedTheme === "dark") {
-    document.documentElement.classList.add("dark");
-  }
-
-  // Apply background pattern class early
-  document.body.classList.add(storedPattern);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const pattern = localStorage.getItem("background") || "grid-paper";
-    document.body.classList.add(pattern);
-
-    const themeBtn = document.getElementById("theme-toggle");
-    const themeIconSun = document.getElementById("sun-icon");
-    const themeIconMoon = document.getElementById("moon-icon");
-
-    const bgBtn = document.getElementById("bg-toggle");
-    const gridPaperIcon = document.getElementById("grid-paper-icon");
-    const dotGridIcon = document.getElementById("dot-grid-icon");
-    const logoImg = document.getElementById("logo");
-
-    // Set initial icons
-    const isDark = document.documentElement.classList.contains("dark");
-    themeIconSun.classList.toggle("hidden", isDark);
-    themeIconMoon.classList.toggle("hidden", !isDark);
-
-    const currentPattern =
-      patterns.find((p) => document.body.classList.contains(p)) ||
-      defaultPattern;
-    gridPaperIcon.classList.toggle("hidden", currentPattern !== "grid-paper");
-    dotGridIcon.classList.toggle("hidden", currentPattern !== "dot-grid");
-
-    // Theme toggle
-    themeBtn.addEventListener("click", () => {
-      const html = document.documentElement;
-      const isNowDark = html.classList.toggle("dark");
-      localStorage.setItem("theme", isNowDark ? "dark" : "light");
-      themeIconSun.classList.toggle("hidden", isNowDark);
-      themeIconMoon.classList.toggle("hidden", !isNowDark);
-    });
-
-    // Background toggle
-    bgBtn.addEventListener("click", () => {
-      const body = document.body;
-      const current =
-        patterns.find((p) => body.classList.contains(p)) || defaultPattern;
-      const next = patterns[(patterns.indexOf(current) + 1) % patterns.length];
-      body.classList.remove(...patterns);
-      body.classList.add(next);
-      localStorage.setItem("background", next);
-      gridPaperIcon.classList.toggle("hidden", next !== "grid-paper");
-      dotGridIcon.classList.toggle("hidden", next !== "dot-grid");
-    });
-  });
-</script>

@@ -71,10 +71,6 @@ body {
   font-family: var(--font-sans);
   display: flex;
   flex-direction: column;
-  background-size: 40px 35px;
-  background-image:
-    repeating-linear-gradient(0deg, var(--color-grid), var(--color-grid) 1px, transparent 1px, transparent 20px),
-    repeating-linear-gradient(90deg, var(--color-grid), var(--color-grid) 1px, transparent 1px, transparent 20px);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s, color 0.3s;
@@ -208,6 +204,11 @@ img {
   height: 1rem;
   fill: var(--color-fg);
   stroke: var(--color-fg);
+}
+
+[type="button"]:hover svg {
+  fill: var(--color-primary);
+  stroke: var(--color-primary);
 }
 
 /* ============================================ */
