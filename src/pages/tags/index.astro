@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Grid from "../../components/Grid.astro";
+
+const allPosts = await getCollection("posts");
+
+const uniqueTags = [
+  ...new Set(allPosts.map((post: any) => post.data.tags).flat()),
+];
+---
+
+<BaseLayout title="Tags">
+  {
+    uniqueTags.length === 0 ? (
+      <p>No tags found.</p>
+    ) : (
+      <Grid>
+        {uniqueTags.map((tag) => (
+          <a href={`/tags/${tag}`} class="text-lg text-primary hover:underline">
+            # {tag}
+          </a>
+        ))}
+      </Grid>
+    )
+  }</BaseLayout
+>

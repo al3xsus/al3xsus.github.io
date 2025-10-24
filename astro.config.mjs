@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import { remarkReadingTime } from './remark-reading-time.mjs';
 
 import preact from '@astrojs/preact';
 
@@ -9,5 +10,8 @@ export default defineConfig({
   site: 'https://al3xsus.github.io',
   base: '/',
 
-  integrations: [preact({compat: true, devtools: true})],
+  integrations: [preact({ compat: true, devtools: true })],
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+  },
 });

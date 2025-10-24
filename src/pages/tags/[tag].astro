@@ -1,0 +1,41 @@
+---
+import Card from "../../components/Card.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts");
+
+  const uniqueTags = [
+    ...new Set(allPosts.map((post: any) => post.data.tags).flat()),
+  ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post: any) =>
+      post.data.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BaseLayout title={tag}>
+  {
+    posts.length === 0 ? (
+      <p>No posts found.</p>
+    ) : (
+      <section class="flex flex-col gap-8">
+        {posts.map((post) => (
+          <Card {...post} />
+        ))}
+      </section>
+    )
+  }
+</BaseLayout>

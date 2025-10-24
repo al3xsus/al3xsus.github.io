@@ -85,58 +85,57 @@ const techStack = data.techStack ?? [];
     <p class="text-base text-foreground/60">
       {description}
     </p>
-
-    {
-      tags.length > 0 && (
-        <ul class="flex flex-wrap gap-2 mt-2 text-sm text-foreground">
-          {tags.map((tag: string) => (
-            <li class="px-2 py-0.5 bg-secondary rounded list-none">{tag}</li>
-          ))}
-        </ul>
-      )
-    }
-
-    {
-      repo && (
-        <p class="text-sm mt-2 text-primary">
-          Repo:{" "}
-          <a
-            href={repo}
-            class="underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {repo}
-          </a>
-        </p>
-      )
-    }
-
-    {
-      liveDemo && (
-        <p class="text-sm mt-2 text-primary">
-          Live Demo:{" "}
-          <a
-            href={liveDemo}
-            class="underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {liveDemo}
-          </a>
-        </p>
-      )
-    }
-
-    {
-      techStack.length > 0 && (
-        <ul class="flex flex-wrap gap-2 mt-2 text-sm text-primary">
-          {techStack.map((tech: unknown) => (
-            <li class="px-2 py-0.5 bg-background rounded list-none">{tech}</li>
-          ))}
-        </ul>
-      )
-    }
   </a>
+  {
+    tags.length > 0 && (
+      <ul class="flex flex-wrap gap-2 mt-2 text-sm text-foreground">
+        {tags.map((tag: string) => (
+          <li class="px-2 py-0.5 bg-secondary rounded list-none">{tag}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    repo && (
+      <p class="text-sm mt-2 text-primary">
+        Repo:{" "}
+        <a
+          href={repo}
+          class="underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {repo}
+        </a>
+      </p>
+    )
+  }
+
+  {
+    liveDemo && (
+      <p class="text-sm mt-2 text-primary">
+        Live Demo:{" "}
+        <a
+          href={liveDemo}
+          class="underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {liveDemo}
+        </a>
+      </p>
+    )
+  }
+
+  {
+    techStack.length > 0 && (
+      <ul class="flex flex-wrap gap-2 mt-2 text-sm text-primary">
+        {techStack.map((tech: unknown) => (
+          <li class="px-2 py-0.5 bg-background rounded list-none">{tech}</li>
+        ))}
+      </ul>
+    )
+  }
 </article>
 

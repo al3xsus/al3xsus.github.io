@@ -9,6 +9,7 @@ const {
   coverImage = "",
   url = "",
   tags = [],
+  readingTime,
 } = Astro.props;
 ---
 
@@ -77,7 +78,7 @@ const {
         )
       }
     </section>
-    <section class="mb-8">Time to read: ~ minutes</section>
+    <section class="mb-8">Time: {readingTime}</section>
     <slot />
   </article>
 </BaseLayout>
