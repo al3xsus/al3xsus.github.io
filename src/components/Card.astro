@@ -7,9 +7,8 @@ const isProject = collection === "projects";
 const title = data.title ?? id;
 const description = data.description ?? "";
 const slug = data.slug ?? id;
-const date = data.date ?? "";
+const date = data.created ?? "";
 const tags = data.tags ?? [];
-const category = isPost ? "Post" : "Project";
 const href = `/${collection}/${slug}`;
 const coverImage = data.coverImage ?? "/images/default-cover.jpg";
 const linkedinURL = data.linkedinURL ?? null;
@@ -79,7 +78,11 @@ const techStack = data.techStack ?? [];
     </h2>
 
     <p class="text-sm text-foreground/60">
-      {date} • {category}
+      {date && new Date(date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      })}
     </p>
 
     <p class="text-base text-foreground/60">
@@ -90,7 +93,12 @@ const techStack = data.techStack ?? [];
     tags.length > 0 && (
       <ul class="flex flex-wrap gap-2 mt-2 text-sm text-foreground">
         {tags.map((tag: string) => (
-          <li class="px-2 py-0.5 bg-secondary rounded list-none">{tag}</li>
+          <a
+            href={`/tags/${tag}`}
+            class="underline"
+          >
+            <li class="px-2 py-0.5 bg-secondary rounded list-none">#{tag}</li>
+          </a>
         ))}
       </ul>
     )

@@ -10,21 +10,23 @@ import HeroElement from "../components/HeroElement";
 
 <BaseLayout title="Home" description="Welcome to my blog!">
   <div class="flex flex-col gap-4">
-    <section
-      class="md:col-span-3 card flex items-center justify-around animate-fade-in"
-    >
+    <section class="card flex items-center justify-between animate-fade-in">
       <Picture
         src={myImage}
-        alt="A description of my image."
-        class="rounded-full w-16 h-16 md:w-48 md:h-48 object-cover"
+        formats={["avif", "webp"]}
+        alt="My portrait."
+        inferSize={true}
+        class="rounded-lg w-48 h-48 md:w-16 md:h-16 object-cover"
       />
 
-      <article class="text-center">
+      <article class="text-center w-full">
         <h1 class="text-3xl font-bold">
           Hello, I'm Alex and Welcome to My Blog
         </h1>
         <p class="text-lg">
-          Everything is under construction, pls come back later when it's done
+          I'm software developer and tech enthusiast (well, kinda obvious,
+          huh?). Here, I share my thoughts on programming, technology, and my
+          personal projects.
         </p>
       </article>
     </section>

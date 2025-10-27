@@ -33,7 +33,13 @@ const {
     <!-- Right: Last Updated -->
     <div class="text-sm md:text-right text-center">
       <p class="text-foreground/60">
-        Last updated: <time dateTime={lastUpdated}>{lastUpdated}</time>
+        Last updated: {
+          new Date(lastUpdated).toLocaleDateString(undefined, {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+        }
       </p>
     </div>
   </div>
