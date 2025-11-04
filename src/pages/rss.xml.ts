@@ -2,6 +2,8 @@ import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
+import { marked } from "marked";
+
 import sanitizerConfig from "../configs/sanitizerConfig";
 const parser = new MarkdownIt();
 
@@ -18,8 +20,11 @@ export const GET = async (context) => {
       link: `/posts/${post.data.slug}/`,
       // Note: this will not process components or JSX expressions in MDX files.
       content: sanitizeHtml(
-        parser.render(post.body),
-        sanitizerConfig(sanitizeHtml.defaults)
+        marked.parse(post.body as string),
+        sanitizerConfig({
+          defaultTags: sanitizeHtml.defaults.allowedTags,
+          defaultAttributes: sanitizeHtml.defaults.allowedAttributes,
+        })
       ),
       ...post.data,
     })),

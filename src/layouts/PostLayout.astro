@@ -11,7 +11,6 @@ const {
   tags = [],
   readingTime,
 } = Astro.props;
-console.log("PostLayout props:", Astro.props);
 ---
 
 <BaseLayout
@@ -74,7 +73,7 @@ console.log("PostLayout props:", Astro.props);
           </p>
         </div>
         ·
-        <div class="flex items-center justify-center gap-1">
+        <span class="flex items-center justify-center gap-1">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 512 512">
             <path
               fill-rule="nonzero"
@@ -82,7 +81,7 @@ console.log("PostLayout props:", Astro.props);
             ></path>
           </svg>
           <p class="text-sm text-primary">Listen</p>
-        </div>
+        </span>
       </div>
 
       {

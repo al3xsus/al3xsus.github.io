@@ -18,7 +18,10 @@ const { project } = Astro.props;
 
 const cleanHtml = sanitizeHtml(
   marked.parse(project.data.content),
-  sanitizerConfig(sanitizeHtml.defaults)
+  sanitizerConfig({
+    defaultTags: sanitizeHtml.defaults.allowedTags,
+    defaultAttributes: sanitizeHtml.defaults.allowedAttributes,
+  })
 );
 ---
 
