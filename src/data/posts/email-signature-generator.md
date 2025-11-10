@@ -2,8 +2,7 @@
 title: "From Business Cards to Email Signatures — A Modern Approach"
 description: "Exploring the shift from traditional business cards to digital email signatures, and building a React app to create them."
 slug: "email-signature-generator"
-created: 2025-08-08
-updated: 2025-08-08
+created: 2021-03-29
 tags: ["React", "Material-UI", "email signature", "web development"]
 coverImage: "https://raw.githubusercontent.com/al3xsus/email-signature-generator/refs/heads/main/screenshots/Main.png"
 canonical: ""

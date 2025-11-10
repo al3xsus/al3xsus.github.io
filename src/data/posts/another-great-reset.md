@@ -2,8 +2,7 @@
 title: "Another Great Reset"
 description: "A radical rethinking of sustainable living — moving cities to big waterways, embracing blue and green economies, and redesigning our way of life."
 slug: "another-great-reset"
-created: 2025-08-08
-updated: 2025-08-08
+created: 2021-04-10
 tags:
   [
     "urban planning",

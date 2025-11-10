@@ -5,7 +5,7 @@ import Card from "./Card.astro";
 
 const { collection } = Astro.props;
 const entries = await getCollection(collection);
-const latestEntry = entries.sort((a, b) => b.data.date - a.data.date)[0];
+const latestEntry = entries.sort((a, b) => b.data.created - a.data.created)[0];
 ---
 
 <Card {...latestEntry} />

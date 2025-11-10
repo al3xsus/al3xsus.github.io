@@ -2,8 +2,7 @@
 title: "Building a Streamlit Photo Collage Maker with Python and PIL"
 description: "A step-by-step guide to creating a versatile photo collage app with multiple layout options using Streamlit and Pillow."
 slug: "streamlit-photo-collage-maker"
-created: 2025-08-08
-updated: 2025-08-08
+created: 2025-01-30
 tags: ["Python", "Pillow", "Streamlit", "image processing", "photo collage"]
 coverImage: "https://raw.githubusercontent.com/al3xsus/photo-collage/refs/heads/main/images/photo-collage-cover.webp"
 canonical: ""

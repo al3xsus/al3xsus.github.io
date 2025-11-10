@@ -2,7 +2,7 @@
 title: "Why Microsoft's Media Creation Tool Is a UX Disaster (And How I’d Fix It)"
 description: "A brutally honest teardown of Microsoft’s Media Creation Tool UX — and a step-by-step proposal to redesign it from scratch with real user empathy."
 slug: "media-creation-tool-redesign"
-created: 2025-02-01
+created: 2023-02-10
 tags:
   [
     "UX",

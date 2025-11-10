@@ -2,8 +2,7 @@
 title: "Walk to Mordor: An Interactive Treadmill Adventure"
 description: "Turn your workout into an epic fantasy quest by following Frodo’s journey to Mordor on an AI-powered treadmill."
 slug: "interactive-treadmill-walk-to-mordor"
-created: 2025-08-08
-updated: 2025-08-08
+created: 2024-08-23
 tags:
   [
     "fitness tech",
