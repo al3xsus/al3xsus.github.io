@@ -1,11 +1,9 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import sanitizeHtml from "sanitize-html";
-import MarkdownIt from "markdown-it";
 import { marked } from "marked";
 
 import sanitizerConfig from "../configs/sanitizerConfig";
-const parser = new MarkdownIt();
 
 export const GET = async (context) => {
   const posts = await getCollection("posts");

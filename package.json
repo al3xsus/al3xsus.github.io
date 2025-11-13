@@ -44,7 +44,6 @@
     "astro": "^5.9.2",
     "astro-sitemap": "^1.0.0",
     "gray-matter": "^4.0.3",
-    "markdown-it": "^14.1.0",
     "marked": "^16.0.0",
     "mdast-util-to-string": "^4.0.0",
     "nanostores": "^1.0.1",
