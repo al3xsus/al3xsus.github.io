@@ -9,8 +9,8 @@ export const GET = async (context) => {
   const posts = await getCollection("posts");
 
   return rss({
-    title: "Al3xsus's Blog",
-    description: "Latest posts from Al3xsus",
+    title: "al3xsus's Blog",
+    description: "Latest posts from al3xsus",
     site: context.site,
     stylesheet: "/rss/styles.xsl",
     trailingSlash: false,
@@ -25,6 +25,9 @@ export const GET = async (context) => {
         })
       ),
       ...post.data,
+      pubDate: post.data.created,
+      author: "al3xsus@pm.me (al3xsus)",
+      customData: `<language>en-us</language>`,
     })),
     customData: `<language>en-us</language>`,
   });
