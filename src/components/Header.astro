@@ -1,10 +1,10 @@
 ---
-import { Picture } from "astro:assets";
 import { base } from "astro:config/server";
 
 import ThemeButton from "./ThemeButton.tsx";
 import BackgroundPatternButton from "./BackgroundPatternButton.tsx";
-import DynamicLogo from "./DynamicLogo.tsx";
+
+import Logo from "../images/logo.svg";
 
 const nav = [
   { name: "Posts", href: "/posts" },
@@ -31,7 +31,7 @@ const isActive = (href: string) => normalize(href) === currentPath;
   <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
     <!-- Logo / Site Title -->
     <a href="/" class="hover:text-primary transition-colors">
-      <DynamicLogo client:load />
+      <Logo id="main-logo" class="w-16 h-16 md:w-10 md:h-10" />
     </a>
 
     <!-- Center Nav Links -->

@@ -575,3 +575,8 @@ img {
 
 /* List utilities */
 .list-none { list-style: none; }
+
+#main-logo {
+  fill: var(--color-primary);
+  stroke: var(--color-primary);
+}
