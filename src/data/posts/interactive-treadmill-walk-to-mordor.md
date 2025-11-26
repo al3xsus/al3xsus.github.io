@@ -11,7 +11,7 @@ tags:
     "Lord of the Rings",
     "startup idea",
   ]
-coverImage: "https://media.licdn.com/dms/image/v2/D4E12AQH4Ed5rti6zow/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1724403025702?e=1761177600&v=beta&t=nb5fTr5g8BuPeQwW-XJss5tGzgK6QUjGLhifM5_I3JM"
+coverImage: "interactive-treadmill-walk-to-mordor"
 canonical: ""
 project: ""
 linkedinURL: ""

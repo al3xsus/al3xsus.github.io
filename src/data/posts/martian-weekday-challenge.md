@@ -3,7 +3,14 @@ title: "The Martian Weekday Challenge"
 description: "Solving a programming puzzle about Mars' unique calendar with an 8-day week and leap years."
 slug: "martian-weekday-challenge"
 created: 2025-03-21
-tags: ["JavaScript", "algorithms", "coding challenge", "programming puzzles"]
+tags:
+  [
+    "JavaScript",
+    "Python",
+    "algorithms",
+    "coding challenge",
+    "programming puzzles",
+  ]
 coverImage: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fpkj883zlqfa54g431g4u.jpg"
 canonical: ""
 project: ""

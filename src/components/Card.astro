@@ -1,4 +1,6 @@
 ---
+import { Picture } from "astro:assets";
+
 const { id, data, collection } = Astro.props;
 
 const isPost = collection === "posts";
@@ -10,7 +12,7 @@ const slug = data.slug ?? id;
 const date = data.created ?? "";
 const tags = data.tags ?? [];
 const href = `/${collection}/${slug}`;
-const coverImage = data.coverImage ?? "/images/default-cover.jpg";
+const coverImage = data.coverImage;
 const linkedinURL = data.linkedinURL ?? null;
 const mediumURL = data.mediumURL ?? null;
 const devtoURL = data.devtoURL ?? null;
@@ -19,16 +21,41 @@ const canonical = data.canonical ?? null;
 const repo = isProject ? data.repo : null;
 const liveDemo = data.liveDemo ?? null;
 const techStack = data.techStack ?? [];
+
+const allHeroImages = Object.values(
+  import.meta.glob("../images/hero-images/*.{jpeg,jpg,png,webp}", {
+    eager: true,
+  })
+);
+
+const matchingImage = allHeroImages.find((imageModule) => {
+  // Get the imported file's path (e.g., '/src/assets/hero-images/my-first-post.jpg')
+  const imagePath = imageModule.default.src;
+  // Check if the image path includes the post slug
+  return imagePath.includes(slug);
+});
+
+const heroImageModule = matchingImage?.default;
+
 ---
 
 <article class="card hover:shadow-md transition">
   <a href={href} class="block space-y-2 group">
     {
-      coverImage && (
-        <img
-          src={coverImage}
-          alt={title}
+      coverImage && heroImageModule ? (
+        <Picture
+          src={heroImageModule}
+          alt={`Hero image for ${title}`}
+          formats={["avif", "webp"]}
           class="w-full h-48 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity"
+        />
+      ) : (
+        <Picture
+          src={`https://wsrv.nl/?url=${coverImage}`}
+          alt={`Hero image for ${title}`}
+          formats={["avif", "webp"]}
+          class="w-full h-48 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity"
+          inferSize={true}
         />
       )
     }

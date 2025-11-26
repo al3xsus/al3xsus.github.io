@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 
+import { Picture } from "astro:assets";
+
 const {
   title,
   description = "",
@@ -10,7 +12,23 @@ const {
   url = "",
   tags = [],
   readingTime,
+  slug,
 } = Astro.props;
+
+const allHeroImages = Object.values(
+  import.meta.glob("../images/hero-images/*.{jpeg,jpg,png,webp}", {
+    eager: true,
+  })
+);
+
+const matchingImage = allHeroImages.find((imageModule) => {
+  // Get the imported file's path (e.g., '/src/assets/hero-images/my-first-post.jpg')
+  const imagePath = imageModule.default.src;
+  // Check if the image path includes the post slug
+  return imagePath.includes(slug);
+});
+
+const heroImageModule = matchingImage?.default;
 ---
 
 <BaseLayout
@@ -33,11 +51,20 @@ const {
   >
     <section class="mb-8">
       {
-        coverImage && (
-          <img
-            src={coverImage}
-            alt={title}
+        coverImage && heroImageModule ? (
+          <Picture
+            src={heroImageModule}
+            alt={`Hero image for ${title}`}
+            formats={["avif", "webp"]}
             class="w-full h-auto rounded-lg mb-4"
+          />
+        ) : (
+          <Picture
+            src={`https://wsrv.nl/?url=${coverImage}`}
+            alt={`Hero image for ${title}`}
+            formats={["avif", "webp"]}
+            class="w-full h-auto rounded-lg mb-4"
+            inferSize={true}
           />
         )
       }
