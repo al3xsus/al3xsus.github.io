@@ -167,4 +167,4 @@ So, what is the moral?
 
 Gists with test cases are available [here](https://gist.github.com/al3xsus/67721a518256376692129d3f784dcfd4) and [here](https://gist.github.com/al3xsus/9c592667878db6047185a5a2cd900bd2).
 
-Thanks for the attention! Share your opinion in the comments.
+Thanks for the attention!.

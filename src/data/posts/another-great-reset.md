@@ -154,4 +154,4 @@ This Great Reset plan focuses on sustainable urban planning, resource management
 
 ---
 
-_Thanks for reading! Share your thoughts in the comments and feel free to ask questions._
+_Thanks for reading!_

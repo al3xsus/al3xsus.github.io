@@ -289,4 +289,4 @@ This is not a finished product yet, I’m going to refactor it a bit and add new
 
 [![Smiling Terminator](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2VhdmdsN251aDNkb3Y0Z2Z4aXdleW5jMmR5MHFjMTFhaDA4cmo3cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YjfAfZyzEoOZi/giphy.gif)](https://giphy.com/gifs/arnold-schwarzenegger-terminator-genisys-the-YjfAfZyzEoOZi)
 
-**Well, thanks for reading! Please, share your opinion in the comments, and follow me for more. And don’t be afraid to ask questions.**
+**Well, thanks for reading!**

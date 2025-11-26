@@ -258,4 +258,4 @@ _Signature with photo_
 2. This is a skeleton — you can expand it with multiple templates, photo upload, custom colors, etc.
 3. React + Material UI makes the process quick and flexible.
 
-_Thanks for reading! Share your opinion in the comments._
+_Thanks for reading!_
