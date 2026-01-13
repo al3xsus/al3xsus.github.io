@@ -2,10 +2,6 @@
 import { getCollection, getEntry, render } from "astro:content";
 import PostLayout from "../../layouts/PostLayout.astro";
 
-import sanitizeHtml from "sanitize-html";
-import { marked } from "marked";
-import sanitizerConfig from "../../configs/sanitizerConfig.js";
-
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
   return projects.map((project) => ({
@@ -15,18 +11,10 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-
-const cleanHtml = sanitizeHtml(
-  marked.parse(project.data.content),
-  sanitizerConfig({
-    defaultTags: sanitizeHtml.defaults.allowedTags,
-    defaultAttributes: sanitizeHtml.defaults.allowedAttributes,
-  })
-);
+console.log(project);
 ---
 
 <PostLayout {...project.data}>
-  <section set:html={cleanHtml} />
   <div class="mt-8">
     <h3 class="text-lg font-semi bold">Repository</h3>
     <p>

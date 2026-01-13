@@ -64,7 +64,7 @@ const heroImageModule = matchingImage?.default;
             formats={["avif", "webp"]}
             class="w-full h-auto rounded-lg mb-4"
           />
-        ) : (
+        ) : coverImage ? (
           <Picture
             src={`https://wsrv.nl/?url=${coverImage}`}
             alt={`Hero image for ${title}`}
@@ -72,7 +72,7 @@ const heroImageModule = matchingImage?.default;
             class="w-full h-auto rounded-lg mb-4"
             inferSize={true}
           />
-        )
+        ) : null
       }
     </section>
     <section class="mb-8">
