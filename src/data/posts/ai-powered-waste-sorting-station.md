@@ -5,7 +5,7 @@ slug: "ai-powered-waste-sorting-station"
 created: 2024-10-24
 tags:
   ["AI", "circular economy", "waste management", "recycling", "sustainability"]
-coverImage: "https://github.com/al3xsus/AI-powered-waste-sorting-station/blob/main/images/cover.png?raw=true"
+coverImage: "https://github.com/al3xsus/AI-powered-waste-sorting-station/blob/main/images/cover.webp?raw=true"
 canonical: ""
 project: ""
 linkedinURL: ""
