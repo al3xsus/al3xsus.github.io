@@ -51,6 +51,14 @@ const githubProjectLoader = ({ username }: { username: string }) => {
     load: async ({ store, logger }) => {
       // Use process.env fallback for broader environment support
       const token = import.meta.env.GITHUB_TOKEN || process.env.GITHUB_TOKEN;
+
+      if (!token) {
+        logger.error(
+          "GITHUB_TOKEN is missing! Check your environment variables."
+        );
+        return;
+      }
+
       const octokit = new Octokit({ auth: token });
 
       try {

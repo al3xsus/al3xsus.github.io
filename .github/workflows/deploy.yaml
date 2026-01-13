@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BUILD_PATH: "." # If your Astro project is in a subfolder, change this
+  BUILD_PATH: "."
 
 jobs:
   build:
@@ -40,6 +40,8 @@ jobs:
         working-directory: ${{ env.BUILD_PATH }}
 
       - name: 🛠 Build Astro site
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
         run: npx astro build --site "${{ steps.pages.outputs.origin }}" --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
 
