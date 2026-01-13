@@ -1,114 +1,116 @@
 import { defineCollection, z } from "astro:content";
-import { rssSchema } from "@astrojs/rss";
-
 import { glob } from "astro/loaders";
-import jsonData from "./data/projects/projects.json";
-import matter from "gray-matter";
+import ogs from "open-graph-scraper";
+import { Octokit } from "octokit";
 
+const skipRepos = ["al3xsus"];
+
+// --- Schema ---
 const commonSchema = z.object({
   title: z.string(),
   description: z.string(),
   slug: z.string(),
-  created: z.date(),
-  updated: z.date().optional(),
-  tags: z.array(z.string()).optional(),
+  created: z.coerce.date(),
+  tags: z.array(z.string()).default([]), // Default to empty array
   coverImage: z.string().optional(),
-  canonical: z.string().optional(),
-  linkedinURL: z.string().optional(),
-  mediumURL: z.string().optional(),
-  devtoURL: z.string().optional(),
 });
 
-// -------------------- POSTS --------------------
+// --- Helper: Scraper with Absolute URL correction ---
+async function getOGMetadata(url: string, timeoutMs = 5000) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const { result } = await ogs({
+      url,
+      fetchOptions: { signal: controller.signal },
+    });
+
+    let imageUrl = result.ogImage?.[0]?.url;
+
+    if (imageUrl) {
+      // This logic turns "./IMAGES/two-ways.png" + "https://al3xsus.github.io/path/"
+      // into "https://al3xsus.github.io/path/IMAGES/two-ways.png"
+      const baseUrl = new URL(url);
+
+      // We use the second argument of New URL() to resolve relative paths
+      imageUrl = new URL(imageUrl, baseUrl.href).toString();
+    }
+
+    return { ...result, fixedOgImage: imageUrl };
+  } catch (err) {
+    return null;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+const githubProjectLoader = ({ username }: { username: string }) => {
+  return {
+    name: "github-project-loader",
+    load: async ({ store, logger }) => {
+      // Use process.env fallback for broader environment support
+      const token = import.meta.env.GITHUB_TOKEN || process.env.GITHUB_TOKEN;
+      const octokit = new Octokit({ auth: token });
+
+      try {
+        const { data: repos } =
+          await octokit.rest.repos.listForAuthenticatedUser({
+            visibility: "all",
+            affiliation: "owner",
+            sort: "updated",
+            per_page: 100,
+          });
+
+        const filteredRepos = repos.filter(
+          (repo) =>
+            repo.description && repo.homepage && !skipRepos.includes(repo.name)
+        );
+
+        logger.info(`Processing ${filteredRepos.length} filtered projects...`);
+
+        // Use for...of to avoid hitting some rate limits too hard
+        for (const repo of filteredRepos) {
+          const ogData = await getOGMetadata(repo.homepage!);
+
+          store.set({
+            id: repo.name.toLowerCase(),
+            data: {
+              title: repo.name,
+              description: repo.description || "",
+              slug: repo.name.toLowerCase(),
+              created: new Date(repo.created_at || Date.now()),
+              repo: repo.html_url,
+              liveDemo: repo.homepage || "",
+              coverImage: ogData?.fixedOgImage || "", // Use the fixed absolute URL
+              tags: repo.topics || [],
+            },
+          });
+        }
+      } catch (err) {
+        logger.error(`GitHub Load Error: ${(err as Error).message}`);
+      }
+    },
+  };
+};
+
+// --- Collections ---
 
 const posts = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/data/posts" }),
   schema: z.object({
-    ...commonSchema.shape, // Reuse common schema for posts
+    ...commonSchema.shape,
     project: z.string().optional(),
   }),
 });
 
-// -------------------- PROJECTS (from GitHub) --------------------
-
-async function tryFetchReadme(repoUrl: string) {
-  const branches = ["main", "master"];
-  for (const branch of branches) {
-    const rawUrl =
-      repoUrl.replace("github.com", "raw.githubusercontent.com") +
-      `/${branch}/README.md`;
-    try {
-      const res = await fetch(rawUrl);
-      if (res.ok) {
-        const raw = await res.text();
-        const { content, data: frontmatter } = matter(raw); // parse with gray-matter
-
-        let resultContent = content;
-
-        const id = repoUrl.split("/").pop() ?? crypto.randomUUID();
-
-        let coverImage = frontmatter.coverImage || null;
-        if (coverImage && !coverImage.startsWith("http")) {
-          let newCoverImage = rawUrl.replace("/README.md", coverImage);
-          resultContent = resultContent.replace(
-            `.${coverImage} `,
-            newCoverImage
-          );
-          coverImage = newCoverImage;
-        }
-
-        return {
-          id,
-          repo: repoUrl,
-          content: resultContent, // or `content` if you're rendering Markdown safely later
-          ...frontmatter, // include optional metadata
-          coverImage: coverImage ? coverImage : "",
-        };
-      }
-    } catch (err) {
-      console.error(`❌ Error fetching ${rawUrl}:`, (err as Error).message);
-    }
-  }
-  return null;
-}
-
-async function runWithConcurrencyLimit(
-  tasks: (() => Promise<any>)[],
-  limit: number
-) {
-  const results: any[] = [];
-  let index = 0;
-
-  async function worker() {
-    while (index < tasks.length) {
-      const currentIndex = index++;
-      try {
-        results[currentIndex] = await tasks[currentIndex]();
-      } catch {
-        results[currentIndex] = null;
-      }
-    }
-  }
-
-  const workers = Array.from({ length: limit }, () => worker());
-  await Promise.all(workers);
-  return results.filter(Boolean);
-}
-
 const projects = defineCollection({
-  loader: async () => {
-    const tasks = jsonData.map((repoUrl) => () => tryFetchReadme(repoUrl));
-    return await runWithConcurrencyLimit(tasks, 5);
-  },
+  loader: githubProjectLoader({ username: "your-username" }),
   schema: z.object({
-    ...commonSchema.shape, // Reuse common schema for projects
+    ...commonSchema.shape,
     repo: z.string().url(),
-    content: z.string(),
-    liveDemo: z.string().optional(),
-    techStack: z.array(z.string()).optional(),
+    liveDemo: z.string().url(),
   }),
 });
-
-// -------------------- EXPORT --------------------
 
 export const collections = { posts, projects };

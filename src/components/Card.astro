@@ -49,7 +49,7 @@ const heroImageModule = matchingImage?.default;
           formats={["avif", "webp"]}
           class="w-full h-48 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity"
         />
-      ) : (
+      ) : coverImage ? (
         <Picture
           src={`https://wsrv.nl/?url=${coverImage}`}
           alt={`Hero image for ${title}`}
@@ -57,7 +57,7 @@ const heroImageModule = matchingImage?.default;
           class="w-full h-48 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity"
           inferSize={true}
         />
-      )
+      ) : null
     }
 
     <div class="flex items-center space-x-2 mb-2">
