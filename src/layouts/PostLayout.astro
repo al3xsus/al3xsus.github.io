@@ -2,6 +2,7 @@
 import BaseLayout from "./BaseLayout.astro";
 
 import { Picture } from "astro:assets";
+import Logo from "../images/logo.svg"
 
 const {
   title,
@@ -72,7 +73,8 @@ const heroImageModule = matchingImage?.default;
             class="w-full h-auto rounded-lg mb-4"
             inferSize={true}
           />
-        ) : null
+        ) : <Logo fill="currentColor" class="w-full h-auto rounded-lg mb-4"
+        />
       }
     </section>
     <section class="mb-8">
@@ -123,7 +125,7 @@ const heroImageModule = matchingImage?.default;
             <span class="text-sm text-foreground/60 dark:text-foreground/50">
               Tags:
             </span>
-            <ul class="inline-flex space-x-2 ml-2 list-none">
+            <ul class="flex flex-wrap space-x-2 ml-2 list-none">
               {tags.map((tag: string) => (
                 <li>
                   <a

@@ -1,5 +1,7 @@
 ---
 import { Picture } from "astro:assets";
+import Logo from "../images/logo.svg"
+
 
 const { id, data, collection } = Astro.props;
 
@@ -57,7 +59,8 @@ const heroImageModule = matchingImage?.default;
           class="w-full h-48 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity"
           inferSize={true}
         />
-      ) : null
+      ) : <Logo fill="currentColor" class="w-full h-48 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity"
+      />
     }
 
     <div class="flex items-center space-x-2 mb-2">

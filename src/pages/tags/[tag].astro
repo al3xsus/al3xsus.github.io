@@ -6,34 +6,36 @@ import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("posts");
+  const allProjects = await getCollection("projects")
+  const allData = [...allPosts, ...allProjects]
 
   const uniqueTags = [
-    ...new Set(allPosts.map((post: any) => post.data.tags).flat()),
+    ...new Set(allData.map((post: any) => post.data.tags).flat()),
   ];
 
   return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post: any) =>
+    const filteredData = allData.filter((post: any) =>
       post.data.tags.includes(tag)
     );
     return {
       params: { tag },
-      props: { posts: filteredPosts },
+      props: { dataEntries: filteredData },
     };
   });
 }
 
 const { tag } = Astro.params;
-const { posts } = Astro.props;
+const { dataEntries } = Astro.props;
 ---
 
 <BaseLayout title={tag}>
   {
-    posts.length === 0 ? (
-      <p>No posts found.</p>
+    dataEntries.length === 0 ? (
+      <p>No posts or projects found.</p>
     ) : (
       <section class="flex flex-col gap-8">
-        {posts.map((post) => (
-          <Card {...post} />
+        {dataEntries.map((dataEntry) => (
+          <Card {...dataEntry} />
         ))}
       </section>
     )

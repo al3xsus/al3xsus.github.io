@@ -28,7 +28,7 @@ async function getOGMetadata(url: string, timeoutMs = 5000) {
 
     let imageUrl = result.ogImage?.[0]?.url;
 
-    if (imageUrl) {
+    if (imageUrl && !imageUrl.startsWith("https://al3xsus.github.io")) {
       // This logic turns "./IMAGES/two-ways.png" + "https://al3xsus.github.io/path/"
       // into "https://al3xsus.github.io/path/IMAGES/two-ways.png"
       const baseUrl = new URL(url);
@@ -80,7 +80,7 @@ const githubProjectLoader = ({ username }: { username: string }) => {
         // Use for...of to avoid hitting some rate limits too hard
         for (const repo of filteredRepos) {
           const ogData = await getOGMetadata(repo.homepage!);
-
+          
           store.set({
             id: repo.name.toLowerCase(),
             data: {
