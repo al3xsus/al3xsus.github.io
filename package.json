@@ -2,12 +2,13 @@
   "name": "al3xsus.github.io",
   "type": "module",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Personal website of Alexandr Lavrentyev",
   "keywords": [
     "astro",
     "personal",
-    "portfolio"
+    "portfolio",
+    "blog"
   ],
   "author": {
     "name": "Alexandr Lavrentyev",
